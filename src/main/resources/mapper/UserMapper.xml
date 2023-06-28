@@ -15,4 +15,15 @@
         where iuser = #{iuser}
     </update>
 
+    <select id="selUser">
+        select uid, name, age, height, weight, gender, usepic
+        from user
+        where iuser = #{iuser}
+    </select>
+
+    <delete id="delUser">
+        delete from user
+        where iuser = #{iuser}
+    </delete>
+
 </mapper>

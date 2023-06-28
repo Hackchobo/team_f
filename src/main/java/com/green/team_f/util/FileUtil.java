@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class FileUtil {
 
+
     public static String getExt(String ext) {
         return ext.substring(ext.lastIndexOf(".")+1);
     } // 확장자를 뽑아 내는 부분
