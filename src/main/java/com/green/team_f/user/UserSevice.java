@@ -27,22 +27,28 @@ public class UserSevice {
     }
 
     public int insUser(UserInsDto dto){
-        double nomal;
+        UserEntity entity = new UserEntity();
+        //double bmr;
+        entity.setUid(dto.getUid());
+        entity.setUpw(dto.getUpw());
+        entity.setName(dto.getName());
+        entity.setAge(dto.getAge());
+        entity.setHeight(dto.getHeight());
+        entity.setWeight(dto.getWeight());
         //성별 대문자 변경
         char gender = Character.toUpperCase(dto.getGender());
-        dto.setGender(gender);
+        entity.setGender(gender);
         if (!(gender == 'M' || gender == 'F')) {
             return -1;
         }
 
         //기초대사량 측정
-        if(dto.getGender() == 'M'){
-          nomal =  66.47 +(13.75 * dto.getHeight())+(5 * dto.getHeight())-(6.76 * dto.getAge());
+        if(entity.getGender() == 'M'){
+          entity.setBmr(66.47 +(13.75 * dto.getHeight())+(5 * dto.getHeight())-(6.76 * dto.getAge()));
         } else {
-            nomal =  665.1+(9.56 * dto.getHeight())+(1.85 * dto.getHeight()) - (4.68 * dto.getAge());
+          entity.setBmr(665.1+(9.56 * dto.getHeight())+(1.85 * dto.getHeight()) - (4.68 * dto.getAge()));
         }
-
-        return mapper.insUser(dto);
+        return mapper.insUser(entity);
     } // 회원등록 (사진제외 NULL값으로 날라감)
 
     public int updUserPic(MultipartFile pic, UserPatchPicDto dto){
@@ -89,7 +95,9 @@ public class UserSevice {
         if(dic.exists()) {
             dic.delete();
         }*/
+
         File folder = new File(path);
+       // folder.delete();
         try {
             while(folder.exists()) {
                 File[] folder_list = folder.listFiles(); //파일리스트 얻어오기

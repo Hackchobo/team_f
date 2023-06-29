@@ -4,9 +4,9 @@
     
     <insert id="insUser">
         insert into user
-        (uid, upw, name, age, height, weight, gender)
+        (uid, upw, name, age, height, weight, gender, bmr)
         values
-        (#{uid}, #{upw}, #{name}, #{age}, #{height}, #{weight}, #{gender})
+        (#{uid}, #{upw}, #{name}, #{age}, #{height}, #{weight}, #{gender}, #{bmr})
     </insert>
 
     <update id="updUserPic">

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
-    int insUser(UserInsDto dto);
+    int insUser(UserEntity entity);
     int updUserPic(UserPatchPicDto dto);
     UserEntity selUser(UserEntity entity);
     int delUser(UserRemoveDto dto);
