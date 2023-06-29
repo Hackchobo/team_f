@@ -25,12 +25,11 @@ public class ExRecController {
         dto.setIhelCate(ihelCate);
         return service.selEx(dto);
     }
-//    @Tag(name="운동기록",description = " uhPic:유저운동사진, ical:기록날짜, uhKcal:시간당소모량, ctnt:유저메모, time:운동시간(분단위)")
-//    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public int postEx(@RequestPart MultipartFile uhPic, @RequestPart InsExRecDto dto, @RequestPart int time){
-//        dto.setTime(time);
-//        return service.InsExRec(uhPic,dto);
-//    }
+    @Tag(name="운동기록입력",description = " uhPic:유저운동사진(이미지파일), ical:기록날짜(yyyy-mm-dd), uhKcal:시간당소모량(int), ctnt:유저메모(String, text), time:운동시간(ex:30분=30,1시간 20분 =80)")
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public int postEx(@RequestPart MultipartFile uhPic,@RequestPart InsExRecDto dto) {
+        return service.InsExRec(uhPic,dto);
+    }
     @Tag(name="운동카테고리목록", description = "문자 배열 타입")
     @GetMapping("/exlist")
     public List<String> getHelCateList (){return service.getHelCateList();}

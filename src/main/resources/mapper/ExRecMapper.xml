@@ -10,6 +10,16 @@
         where ihel_cate = #{ihelCate}
     </select>
 
+    <insert id="InsExRec">
+        INSERT INTO user_health_record
+        SET ihel_cate = #{ihelCate}
+        , ical = #{ical}
+        , uh_kcal=#{uhKcal}
+        , ctnt=#{ctnt}
+        , time = #{time}
+        , uh_pic=#{uhPic}
+    </insert>
+
     <select id="getHelCateList" parameterType="String">
         select hel_name
         from health_category
