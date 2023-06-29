@@ -20,7 +20,7 @@ public class ExRecController {
 
     @Tag(name="카테고리+칼로리",description = "ihelCate:운동종류pk값")
     @GetMapping("/kcalbyex")
-    public int getCate(@RequestParam long ihelCate){
+    public int getCate(@RequestParam Long ihelCate){
         SelExDto dto = new SelExDto();
         dto.setIhelCate(ihelCate);
         return service.selEx(dto);

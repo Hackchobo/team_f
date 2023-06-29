@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class SelExDto {
-    private long ihelCate;
+    private Long ihelCate;
 }
