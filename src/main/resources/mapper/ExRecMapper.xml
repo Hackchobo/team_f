@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board8.exRec.ExRecMapper">
+    <select id="selEx" parameterType="int">
+        select h_kcal hKcal
+        from health_category
+        where ihel_cate = #{ihelCate}
+    </select>
+
+    <select id="getHelCateList" parameterType="String">
+        select hel_name
+        from health_category
+    </select>
+</mapper>
