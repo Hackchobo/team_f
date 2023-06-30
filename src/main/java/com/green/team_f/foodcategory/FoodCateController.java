@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping("/foodcate")
+@RequestMapping("/api/foodcate")
 @RequiredArgsConstructor
 public class FoodCateController {
     private final FoodCateService service;

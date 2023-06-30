@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name="회원가입 페이지")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private UserSevice service;
