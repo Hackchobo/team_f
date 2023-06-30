@@ -16,7 +16,7 @@
     </update>
 
     <select id="selUser">
-        select uid, name, age, height, weight, gender, usepic
+        select uid, name, age, height, weight, gender, usepic, bmr
         from user
         where iuser = #{iuser}
     </select>
