@@ -16,7 +16,7 @@ import java.io.File;
 @Slf4j
 @Service
 public class UserSevice {
-    @Value("D:/download/F_Hpic")
+    @Value("${file.dir}")
     private String fileDir;
     private UserMapper mapper;
 

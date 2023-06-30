@@ -22,3 +22,7 @@ springdoc:
 
 file:
   dir: D:/download/F_Hpic
+
+file3:
+   dir: D:/download/exrec
+
