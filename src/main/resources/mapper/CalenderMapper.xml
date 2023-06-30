@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.green.tean_f.calender.CalenderMapper">
+    <select id="getMonthRecordByUser" >
+        SELECT DATE_FORMAT(created_at, '%d') AS dates
+        FROM calender
+        WHERE iuser = #{iuser} AND YEAR(created_at) = #{year} AND MONTH(created_at) = #{month}
+    </select>
+</mapper>
