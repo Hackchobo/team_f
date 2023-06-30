@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.team_f.foodcategory.FoodCateMapper">
+    <insert id="insFoodCate">
+        insert into food_category
+        (food_name,f_kcal,food_pic)
+        values
+        (#{foodName},#{f_kcal},#{foodPic})
+    </insert>
+
+    <select id="selFoodCate">
+        select ifood,food_name,food_kcal
+        from food_category
+    </select>
+
+    <update id="updFoodCate">
+        update food_category
+        set food_name=#{foodName},f_kcal=#{f_kcal},food_pic=#{foodPic}
+        where ifood=#{ifood}
+    </update>
+
+    <delete id="delFoodCate">
+        delete from food_category
+        where ifood=#{ifood}
+    </delete>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.team_f.foodrecord.FoodRecordMapper">
+
+    <insert id="insFoodRecord">
+        insert into user_meal_record
+        (ifood,ical,uef_time,ctnt,uef_pic)
+        values
+        (#{ifood},#{ical},#{uefTime},#{ctnt},#{uefPic})
+    </insert>
+
+
+    <select id="selIuserDate" resultType="int">
+        SELECT ical FROM calender
+        WHERE ical=#{ical}
+    </select>
+
+
+
+    <select id="selRecordAll">
+        select imeal_record imealRecord,ifood,ical,uef_time uefTime,ctnt,uef_pic uefPic from user_meal_record
+    </select>
+
+
+    <update id="updRecord">
+        update user_meal_record
+        set ifood=#{ifood},ical=#{ical},uef_time=#{uefTime},ctnt=#{ctnt},uef_pic=#{uefPic}
+        where imeal_record=#{imealRecord}
+    </update>
+
+    <delete id="delRecord">
+        delete from user_meal_record
+        where imeal_record=#{imealRecord}
+    </delete>
+</mapper>
