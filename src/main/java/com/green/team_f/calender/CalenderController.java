@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/calender")
+@RequestMapping("/api/calender")
 @RequiredArgsConstructor
 @Slf4j
 public class CalenderController {
