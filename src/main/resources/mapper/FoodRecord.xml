@@ -18,9 +18,9 @@
     </select>
 
 
-
     <select id="selRecordAll">
-        select imeal_record imealRecord,ifood,ical,uef_time uefTime,ctnt,uef_pic uefPic from user_meal_record
+        select imeal_record imealRecord,ifood,ical,uef_time uefTime,ctnt,uef_pic uefPic
+        from user_meal_record
     </select>
 
 

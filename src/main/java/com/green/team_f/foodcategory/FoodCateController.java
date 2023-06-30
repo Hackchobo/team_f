@@ -5,6 +5,7 @@ import com.green.team_f.foodcategory.model.FoodCateEntity;
 import com.green.team_f.foodcategory.model.FoodCateInsDto;
 import com.green.team_f.foodcategory.model.FoodCateUpDto;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Tag(name = "음식카테고리")
 @RestController
 @RequestMapping("/api/foodcate")
 @RequiredArgsConstructor
