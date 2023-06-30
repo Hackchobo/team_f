@@ -11,7 +11,7 @@
     </insert>
 
     <select id="selFoodCate">
-        select ifood,food_name,f_kcal
+        select ifood,food_name foodName,f_kcal, food_pic foodPic
         from food_category
     </select>
 
