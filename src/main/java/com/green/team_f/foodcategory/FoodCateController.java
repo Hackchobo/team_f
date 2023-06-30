@@ -15,7 +15,7 @@ import java.util.List;
 
 @Tag(name = "음식카테고리")
 @RestController
-@RequestMapping("/foodcate")
+@RequestMapping("/api/foodcate")
 @RequiredArgsConstructor
 public class FoodCateController {
     private final FoodCateService service;

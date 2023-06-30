@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping("/exrec")
+@RequestMapping("/api/exrec")
 @RequiredArgsConstructor
 @Slf4j
 public class ExRecController {
