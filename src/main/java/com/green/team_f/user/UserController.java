@@ -45,7 +45,7 @@ public class UserController {
         return service.updUserPic(pic,dto);
     }
 
-    @GetMapping
+    @GetMapping("/{iuser}")
     @Operation(summary = "회원 정보 보기",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )
