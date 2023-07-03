@@ -1,9 +1,6 @@
 package com.green.team_f.user;
 
-import com.green.team_f.user.model.UserEntity;
-import com.green.team_f.user.model.UserInsDto;
-import com.green.team_f.user.model.UserPatchPicDto;
-import com.green.team_f.user.model.UserRemoveDto;
+import com.green.team_f.user.model.*;
 import com.green.team_f.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +81,16 @@ public class UserSevice {
         return 1;
     }
 
-    public UserEntity selUser(UserEntity entity){
+    public UserSelDto selUser(UserEntity entity){
+        UserSelDto dto = new UserSelDto();
+        entity.setUid(dto.getUid());
+        entity.setName(dto.getName());
+        entity.setAge(dto.getAge());
+        entity.setHeight(dto.getHeight());
+        entity.setWeight(dto.getWeight());
+        entity.setGender(dto.getGender());
+        entity.setUsepic(dto.getUsepic());
+        entity.setBmr(dto.getBmr());
         return mapper.selUser(entity);
     }
 

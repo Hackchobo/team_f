@@ -15,7 +15,7 @@
         where iuser = #{iuser}
     </update>
 
-    <select id="selUser">
+    <select id="selUser" resultType="UserSelDto">
         select uid, name, age, height, weight, gender, usepic, bmr
         from user
         where iuser = #{iuser}
