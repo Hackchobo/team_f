@@ -1,9 +1,6 @@
 package com.green.team_f.user;
 
-import com.green.team_f.user.model.UserEntity;
-import com.green.team_f.user.model.UserInsDto;
-import com.green.team_f.user.model.UserPatchPicDto;
-import com.green.team_f.user.model.UserRemoveDto;
+import com.green.team_f.user.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,13 +49,13 @@ public class UserController {
     @Operation(summary = "회원 정보 보기",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )
-    public UserEntity getUser(@RequestParam int iuser){
+    public UserSelDto getUser(@PathVariable int iuser){
         UserEntity entity = new UserEntity();
         entity.setIuser(iuser);
         return service.selUser(entity);
     }
 
-    @DeleteMapping("/{iuser}")
+    @DeleteMapping
     @Operation(summary = "회원 탈퇴",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )
