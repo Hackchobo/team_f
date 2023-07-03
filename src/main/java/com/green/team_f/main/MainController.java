@@ -1,5 +1,7 @@
 package com.green.team_f.main;
 
+import com.green.team_f.main.model.GetDataOfTodayDto;
+import com.green.team_f.main.model.GetDataOfTodayVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
