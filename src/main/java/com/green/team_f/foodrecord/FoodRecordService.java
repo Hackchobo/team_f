@@ -21,10 +21,7 @@ public class FoodRecordService {
     private String fileDir;
 
     public int insFoodRecord(MultipartFile img, FoodRecordInsDto dto){
-        int result = mapper.selIuserDate(dto.getIcal());
-        if(result!=0){
-            return -1;
-        }
+
 
         String path = fileDir + "/"+dto.getIcal();
         File file = new File(path);
