@@ -67,7 +67,7 @@ public class FoodRecordController {
 
 
     @GetMapping("/{ical}")
-    @Operation(summary = "음식의 총칼로리")
+    @Operation(summary = "음식의 총칼로리",description = "ResponseBody의 값이 해당유저의 하루 총 섭취칼로리")
     public int getTotalEatKcal(@PathVariable int ical){
         return service.sumEacKcal(ical);
     }
