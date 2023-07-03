@@ -22,7 +22,6 @@ public class FoodRecordService {
 
     public int insFoodRecord(MultipartFile img, FoodRecordInsDto dto){
 
-
         String path = fileDir + "/"+dto.getIcal();
         File file = new File(path);
         if (!file.exists()) {
