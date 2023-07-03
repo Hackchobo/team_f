@@ -80,4 +80,9 @@ public class FoodRecordService {
     public int delRecord(int imealRecord){
         return mapper.delRecord(imealRecord);
     }
+
+
+    public int sumEacKcal(int ical){
+        return sumEacKcal(ical);
+    }
 }

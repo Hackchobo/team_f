@@ -1,4 +1,4 @@
-package com.green.team_f.main;
+package com.green.team_f.main.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

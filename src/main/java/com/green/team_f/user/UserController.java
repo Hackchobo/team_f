@@ -48,7 +48,7 @@ public class UserController {
         return service.updUserPic(pic,dto);
     }
 
-    @GetMapping("/{iuser}")
+    @GetMapping
     @Operation(summary = "회원 정보 보기",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )
@@ -58,7 +58,7 @@ public class UserController {
         return service.selUser(entity);
     }
 
-    @DeleteMapping("/{iuser}")
+    @DeleteMapping
     @Operation(summary = "회원 탈퇴",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )

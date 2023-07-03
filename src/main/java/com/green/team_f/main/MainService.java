@@ -1,5 +1,7 @@
 package com.green.team_f.main;
 
+import com.green.team_f.main.model.GetDataOfTodayDto;
+import com.green.team_f.main.model.GetDataOfTodayVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

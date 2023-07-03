@@ -34,4 +34,10 @@
         delete from user_meal_record
         where imeal_record=#{imealRecord}
     </delete>
+
+
+    <select id="sumEacKcal" resultType="int">
+        select sum(uef_kcal) from user_meal_record
+        where ical=#{ical}
+    </select>
 </mapper>

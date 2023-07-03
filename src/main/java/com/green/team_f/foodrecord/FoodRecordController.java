@@ -34,7 +34,6 @@ public class FoodRecordController {
         return service.insFoodRecord(img,dto);
     }
 
-
     @GetMapping
     @Operation(summary = "모든유저 식사기록 정보",description = ""+
             "imeal_record : 식사기록 고유번호<br>"+
@@ -63,6 +62,14 @@ public class FoodRecordController {
             "imealRecord :유저의 식사기록 고유번호")
     public int deleteRecord(int imealRecord){
         return service.delRecord(imealRecord);
+    }
+
+
+
+    @GetMapping("/{ical}")
+    @Operation(summary = "음식의 총칼로리")
+    public int getTotalEatKcal(@PathVariable int ical){
+        return service.sumEacKcal(ical);
     }
 
 }

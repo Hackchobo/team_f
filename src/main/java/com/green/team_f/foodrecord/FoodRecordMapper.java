@@ -11,7 +11,9 @@ public interface FoodRecordMapper {
     List<FoodRecordEntity> selRecordAll();
     int updRecord(FoodRecordEntity entity);
     int delRecord(int imealRecord);
-
     int selIuserDate(int ical);
+
+    int sumEacKcal(int ical);
+
 }
 
