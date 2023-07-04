@@ -1,5 +1,6 @@
 package com.green.team_f.list;
 
+import com.green.team_f.list.model.InsCalenderDto;
 import com.green.team_f.list.model.ListSelAllEntity;
 import com.green.team_f.list.model.ListSelHelVo;
 import com.green.team_f.list.model.ListSelMealVo;
@@ -11,4 +12,6 @@ import java.util.List;
 public interface ListMapper {
     List<ListSelMealVo> selMealList(ListSelAllEntity entity);
     List<ListSelHelVo> selHelList(ListSelAllEntity entity);
+
+    int InsCalenderDataForRec(InsCalenderDto dto);
 }

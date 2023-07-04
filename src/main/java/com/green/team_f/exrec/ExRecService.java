@@ -4,6 +4,8 @@ package com.green.team_f.exrec;
 import com.green.team_f.exrec.model.InsExRecDto;
 import com.green.team_f.exrec.model.InsExRecDto2;
 import com.green.team_f.exrec.model.SelExDto;
+import com.green.team_f.list.ListService;
+import com.green.team_f.list.model.InsCalenderDto;
 import com.green.team_f.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class ExRecService {
+    private final ListService listService;
     private final ExRecMapper mapper;
     @Value("${file3.dir}")
     private String filedir;
@@ -31,6 +34,11 @@ public class ExRecService {
     public List<String> getHelCateList (){return mapper.getHelCateList();}
 
     public int InsExRec(MultipartFile uhPic, InsExRecDto dto){
+        InsCalenderDto insCalenderDto = new InsCalenderDto();
+        insCalenderDto.setIuser(dto.getIuser());
+        insCalenderDto.setRecDate(dto.getRecDate());
+        Long ical = listService.getIcalByuserAndDate(insCalenderDto);
+
         InsExRecDto2 dto2 = new InsExRecDto2();
         SelExDto sDto = new SelExDto();
 
@@ -38,7 +46,7 @@ public class ExRecService {
         dto2.setIhelCate(dto.getIhelCate());
         int exKcalPerMin = selEx(sDto);//운동pk를 보내서 입력된 운동 별 칼로리 얻기
 
-        dto2.setIcal(dto.getIcal());
+        dto2.setIcal(ical);
         dto2.setUhKcal((long)exKcalPerMin * dto.getTime()); //분당 소모칼로리 * 운동시간
         dto2.setCtnt(dto.getCtnt());
         dto2.setTime(dto.getTime());

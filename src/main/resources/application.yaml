@@ -19,6 +19,7 @@ mybatis:
 springdoc:
   swagger-ui:
     path: /swagger.html
+    operations-sorter : method
 
 file:
   dir: D:/download/F_Hpic
