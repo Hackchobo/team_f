@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.team_f.list.ListMapper">
+    <select id="selMealList">
+        SELECT B.imeal_record imealRecord, B.ifood ifood,B.uef_time uefTime,B.uef_kcal uefKcal
+                ,B.ctnt ctntF,B.uef_pic uefPic
+        FROM calender A
+        INNER JOIN user_meal_record B
+        ON A.ical = B.ical
+        WHERE A.created_at = #{date}
+        ORDER BY B.uef_time
+    </select>
+
+    <select id="selHelList">
+        SELECT B.ihel_record ihelRecord, B.ihel_cate ihelCate, B.uh_kcal uhKcal, B.ctnt
+                , B.uh_pic uhPic, B.time time
+        FROM calender A
+        INNER JOIN user_health_record B
+        ON A.ical = B.ical
+        WHERE A.created_at = #{date}
+        ORDER BY B.time
+    </select>
+
+
+    <insert id="InsCalenderDataForRec" useGeneratedKeys="true" keyProperty="ical">
+        <selectKey keyProperty="ical" order="AFTER" resultType="InsCalenderDto">
+            SELECT ical FROM calender WHERE iuser = #{iuser} AND created_at = #{recDate}
+        </selectKey>
+        INSERT INTO calender
+        (iuser, created_at)
+        SELECT #{iuser}, #{recDate}
+        FROM DUAL
+        WHERE NOT EXISTS (
+        SELECT created_at
+        FROM calender
+        WHERE iuser = #{iuser} AND created_at = #{recDate}
+        )
+    </insert>
+
+</mapper>
