@@ -8,5 +8,6 @@ public class InsExRecDto {
     private long ical;
     private String ctnt;
     private int time;
-
+    private int iuser;
+    private String recDate;
 }

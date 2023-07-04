@@ -12,7 +12,7 @@
     </select>
 
     <select id="selHelList">
-        SELECT B.ihel_record ihelRecord, B.ihel_cate ihelCate, B.uh_kcal uhKcal, B.ctnt ctnt
+        SELECT B.ihel_record ihelRecord, B.ihel_cate ihelCate, B.uh_kcal uhKcal, B.ctnt
                 , B.uh_pic uhPic, B.time time
         FROM calender A
         INNER JOIN user_health_record B
@@ -20,5 +20,21 @@
         WHERE A.created_at = #{date}
         ORDER BY B.time
     </select>
+
+
+    <insert id="InsCalenderDataForRec" useGeneratedKeys="true" keyProperty="ical">
+        <selectKey keyProperty="ical" order="AFTER" resultType="InsCalenderDto">
+            SELECT ical FROM calender WHERE iuser = #{iuser} AND created_at = #{recDate}
+        </selectKey>
+        INSERT INTO calender
+        (iuser, created_at)
+        SELECT #{iuser}, #{recDate}
+        FROM DUAL
+        WHERE NOT EXISTS (
+        SELECT created_at
+        FROM calender
+        WHERE iuser = #{iuser} AND created_at = #{recDate}
+        )
+    </insert>
 
 </mapper>

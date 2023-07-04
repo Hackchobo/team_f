@@ -1,14 +1,12 @@
 package com.green.team_f.list;
 
+import com.green.team_f.list.model.InsCalenderDto;
 import com.green.team_f.list.model.ListSelAllEntity;
 import com.green.team_f.list.model.ListSelHelVo;
 import com.green.team_f.list.model.ListSelMealVo;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,4 +40,19 @@ public class ListController {
         entity.setDate(date);
         return service.selHelList(entity);
     }
+
+
+    @GetMapping("/icalTest")
+    @Operation(summary = "백엔드용 메서드입니다", description ="iuser : int, recDate : yyyy-mm-dd or yyyymmdd<br>"+
+            "날짜와 유저를 파라미터로 받아 캘린더 pk값을 리턴합니다<br>" +
+            "달력 레코드 존재 X :  새로운 레코드 생성 후 pk리턴 <br>" +
+            "달력 레코드 존재 O :  날짜,유저에 해당하는 pk 리턴<br>")
+    public Long getIcal(@RequestParam int iuser, @RequestParam String recDate){
+        InsCalenderDto calenderDto = new InsCalenderDto();
+        calenderDto.setIuser(iuser);
+        calenderDto.setRecDate(recDate);
+        return service.getIcalByuserAndDate(calenderDto);
+    }
+
+
 }
