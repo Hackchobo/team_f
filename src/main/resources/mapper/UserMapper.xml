@@ -26,4 +26,16 @@
         where iuser = #{iuser}
     </delete>
 
+    <update id="updUserGoal">
+        update user
+        set goal = #{goal}
+        where iuser = #{iuser}
+    </update>
+
+    <select id="selUserGoal" resultType="UserPatchGoalVo">
+        select iuser, goal
+        from user
+        where iuser = #{iuser}
+    </select>
+
 </mapper>

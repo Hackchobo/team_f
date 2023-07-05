@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Tag(name = "음식, 운동 리스트")
-@RequestMapping("/api/List")
+@RequestMapping("/api/list")
 public class ListController {
 
     private ListService service;
