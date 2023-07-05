@@ -1,7 +1,7 @@
 package com.green.team_f.user;
 
 import com.green.team_f.user.model.*;
-import com.green.team_f.util.FileUtil;
+import com.green.team_f.util.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,7 +50,7 @@ public class UserSevice {
 
     public int updUserPic(MultipartFile pic, UserPatchPicDto dto){
         String centerPath = String.format("user/%d", dto.getIuser());
-        String dicPath = String.format("%s/%s", fileDir, centerPath);
+        String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
 
         File dic = new File(dicPath);           //폴더가 없을 경우 폴더를 생성
         if(!dic.exists()) {
@@ -58,9 +58,9 @@ public class UserSevice {
         }
 
         String originFileName = pic.getOriginalFilename();
-        String savedFileName = FileUtil.makeRandomFileNm(originFileName);
+        String savedFileName = FileUtils.makeRandomFileNm(originFileName);
         String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
-        String targetPath = String.format("%s/%s", fileDir, savedFilePath);
+        String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
         File target = new File(targetPath);
         try {
             pic.transferTo(target);
