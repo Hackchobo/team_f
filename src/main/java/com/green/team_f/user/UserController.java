@@ -65,4 +65,23 @@ public class UserController {
         return service.delUser(dto);
     }
 
+    @PatchMapping
+    @Operation(summary = "회원의 목표글올리기",description = ""+
+            "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>" +
+            "goal: 목표를 적으시오"
+    )
+    public int goalPatch(@RequestBody UserPatchGoalDto dto){
+        return service.updUserGoal(dto);
+    }
+
+    @GetMapping("/{iuser}/goal")
+    @Operation(summary = "회원의 목표표시",description = ""+
+            "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
+    )
+    public UserPatchGoalVo selUser(@PathVariable int iuser){
+        UserEntity entity = new UserEntity();
+        entity.setIuser(iuser);
+        return service.selUserGoal(entity);
+    }
+
 }

@@ -16,4 +16,5 @@ public class UserEntity {
     private int weight;
     private char gender;
     private String usepic;
+    private String goal;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Tag(name = "음식, 운동 리스트")
-@RequestMapping("/api/List")
+@RequestMapping("/api/list")
 public class ListController {
 
     private ListService service;
@@ -27,9 +27,10 @@ public class ListController {
     @Operation(summary = "음식 리스트 출력",description = ""+
             "date:날짜의 값 문자열(ex:20230703)<br>"
     )
-    public List<ListSelMealVo> getMeal(@PathVariable int date){
+    public List<ListSelMealVo> getMeal(@PathVariable int date, @RequestParam int iuser){
         ListSelAllEntity entity = new ListSelAllEntity();
         entity.setDate(date);
+        entity.setIuser(iuser);
         return service.selMealList(entity);
     }
 
@@ -37,9 +38,10 @@ public class ListController {
     @Operation(summary = "운동 리스트 출력",description = ""+
             "date:날짜의 값 문자열(ex:20230703)<br>"
     )
-    public List<ListSelHelVo> getHel(@PathVariable int date){
+    public List<ListSelHelVo> getHel(@PathVariable int date, @RequestParam int iuser){
         ListSelAllEntity entity = new ListSelAllEntity();
         entity.setDate(date);
+        entity.setIuser(iuser);
         return service.selHelList(entity);
     }
 

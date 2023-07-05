@@ -86,7 +86,7 @@ public class ExRecService {
 
         //path, 디렉토리명 만들기
         //파일전송
-        String dirPath = String.format("%s/health/%s",fileDir,dto.getIuser());
+        String dirPath = String.format("%s/health/%s",FileUtils.getAbsolutePath(fileDir),dto.getIuser());
         File file = new File(dirPath);
 
         if(!(file.exists())){

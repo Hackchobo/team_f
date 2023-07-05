@@ -125,7 +125,15 @@ public class UserSevice {
         return mapper.delUser(dto);
     }
 
+    public int updUserGoal(UserPatchGoalDto dto){
+        return mapper.updUserGoal(dto);
+    }
 
+    public UserPatchGoalVo selUserGoal(UserEntity entity){
+        UserPatchGoalVo vo = new UserPatchGoalVo();
+        entity.setGoal(vo.getGoal());
+        return mapper.selUserGoal(entity);
+    }
 
 
 }
