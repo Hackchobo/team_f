@@ -22,6 +22,7 @@ public class ListSelAllEntity {
     private int time;
 
     private int date;
+    private int iuser;
 
 
 }

@@ -7,7 +7,7 @@
         FROM calender A
         INNER JOIN user_meal_record B
         ON A.ical = B.ical
-        WHERE A.created_at = #{date}
+        WHERE A.created_at = #{date} and iuser = #{iuser}
         ORDER BY B.uef_time
     </select>
 
@@ -17,7 +17,7 @@
         FROM calender A
         INNER JOIN user_health_record B
         ON A.ical = B.ical
-        WHERE A.created_at = #{date}
+        WHERE A.created_at = #{date} and iuser = #{iuser}
         ORDER BY B.time
     </select>
 
