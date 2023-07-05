@@ -20,6 +20,14 @@
         , uh_pic=#{uhPic}
     </insert>
 
+    <update id="upCalenderByHelRec">
+        UPDATE calender
+        SET totalhel_kcal = (totalhel_kcal + #{uhKcal})
+        , ex_kcal = (ex_kcal-#{uhKcal})
+        , created_at = #{recDate}
+        where ical = #{ical} and iuser = #{iuser}
+    </update>
+
     <select id="getHelCateList" parameterType="String">
         select hel_name
         from health_category

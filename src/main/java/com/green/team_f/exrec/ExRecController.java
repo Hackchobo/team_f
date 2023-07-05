@@ -37,7 +37,6 @@ public class ExRecController {
     public List<String> getHelCateList (){return service.getHelCateList();}
 
 
-
     @Tag(name="운동기록입력")
     @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description = ""+
             " uhPic:유저운동사진(이미지파일)<br>"+
