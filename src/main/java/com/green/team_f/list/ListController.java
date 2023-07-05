@@ -5,13 +5,15 @@ import com.green.team_f.list.model.ListSelAllEntity;
 import com.green.team_f.list.model.ListSelHelVo;
 import com.green.team_f.list.model.ListSelMealVo;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/List")
+@Tag(name = "음식, 운동 리스트")
+@RequestMapping("/api/List")
 public class ListController {
 
     private ListService service;
