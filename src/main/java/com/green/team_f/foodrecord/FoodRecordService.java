@@ -1,9 +1,7 @@
 package com.green.team_f.foodrecord;
 
 
-import com.green.team_f.foodrecord.model.FoodRecordEntity;
-import com.green.team_f.foodrecord.model.FoodRecordInsDto;
-import com.green.team_f.foodrecord.model.FoodRecordUpdDto;
+import com.green.team_f.foodrecord.model.*;
 import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,9 +38,20 @@ public class FoodRecordService {
         }
 
         FoodRecordEntity entity=new FoodRecordEntity();
+        switch(dto.getUefTime()){
+            case 1:
+                entity.setUefTime("아침");
+                break;
+            case 2:
+                entity.setUefTime("점심");
+                break;
+            case 3:
+                entity.setUefTime("저녁");
+                break;
+        }
         entity.setIcal(dto.getIcal());
         entity.setIfood(dto.getIfood());
-        entity.setUefTime(dto.getUefTime());
+
         entity.setUefPic(namePath);
         entity.setCtnt(dto.getCtnt());
 
@@ -70,10 +79,21 @@ public class FoodRecordService {
         }
 
         FoodRecordEntity entity=new FoodRecordEntity();
+        switch(dto.getUefTime()){
+            case 1:
+                entity.setUefTime("아침");
+                break;
+            case 2:
+                entity.setUefTime("점심");
+                break;
+            case 3:
+                entity.setUefTime("저녁");
+                break;
+        }
         entity.setImealRecord(dto.getImealRecord());
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
-        entity.setUefTime(dto.getUefTime());
+
         entity.setCtnt(dto.getCtnt());
         entity.setUefPic(namePath);
         return mapper.updRecord(entity);
@@ -92,11 +112,30 @@ public class FoodRecordService {
     public int intFoodRecordDate(@RequestBody FoodRecordInsDto dto){
         int i = mapper.selIfood(dto.getIfood());
         FoodRecordEntity entity=new FoodRecordEntity();
+        switch(dto.getUefTime()){
+            case 1:
+                entity.setUefTime("아침");
+                break;
+            case 2:
+                entity.setUefTime("점심");
+                break;
+            case 3:
+                entity.setUefTime("저녁");
+                break;
+        }
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
-        entity.setUefTime(dto.getUefTime());
+
         entity.setUefKcal(i);
         entity.setCtnt(dto.getCtnt());
         return mapper.intFoodRecordDate(entity);
+    }
+
+    public FoodSum sumEacKcal(int iuser, String start, String end){
+        FoodSum foodSum=new FoodSum();
+        List<FoodSumList> foodSums = mapper.sumEatKcal(iuser,start,end);
+        foodSum.setIuser(iuser);
+        foodSum.setList(foodSums);
+        return foodSum;
     }
 }

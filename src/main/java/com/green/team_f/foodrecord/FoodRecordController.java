@@ -4,6 +4,7 @@ package com.green.team_f.foodrecord;
 import com.green.team_f.foodrecord.model.FoodRecordEntity;
 import com.green.team_f.foodrecord.model.FoodRecordInsDto;
 import com.green.team_f.foodrecord.model.FoodRecordUpdDto;
+import com.green.team_f.foodrecord.model.FoodSum;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -66,10 +67,10 @@ public class FoodRecordController {
 
 
 
-    @GetMapping("/{ical}")
+    @GetMapping("/{iuser}")
     @Operation(summary = "음식의 총칼로리",description = "ResponseBody의 값이 해당유저의 하루 총 섭취칼로리")
-    public int getTotalEatKcal(@PathVariable int ical){
-        return service.sumEacKcal(ical);
+    public FoodSum getTotalEatKcal(@PathVariable int iuser, @RequestParam String start, @RequestParam String end){
+        return service.sumEacKcal(iuser,start,end);
     }
 
     @PostMapping
@@ -81,4 +82,6 @@ public class FoodRecordController {
     public int postRecordDate(@RequestBody FoodRecordInsDto dto){
         return service.intFoodRecordDate(dto);
     }
+
+
 }

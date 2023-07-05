@@ -53,4 +53,15 @@
         select f_kcal from food_category
         where ifood=#{ifood}
     </select>
+
+    <select id="sumEatKcal" >
+        select C.iuser,A.uef_kcal uefKcal,A.uef_time uefTime,date_format(A.created_at,'%Y-%m-%d') createdAt
+        from user_meal_record A
+        inner join calender B
+        on A.ical=B.ical
+        inner join user C
+        on B.iuser=C.iuser
+        WHERE C.iuser=#{iuser} AND date_format(A.created_at,'%Y-%m-%d') BETWEEN #{start} AND #{end}
+        ORDER BY A.created_at asc;
+    </select>
 </mapper>

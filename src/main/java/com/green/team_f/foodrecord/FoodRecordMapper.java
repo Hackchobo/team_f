@@ -1,6 +1,7 @@
 package com.green.team_f.foodrecord;
 
 import com.green.team_f.foodrecord.model.FoodRecordEntity;
+import com.green.team_f.foodrecord.model.FoodSumList;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface FoodRecordMapper {
     List<FoodRecordEntity> selRecordAll();
     int updRecord(FoodRecordEntity entity);
     int delRecord(int imealRecord);
-    int selIuserDate(int ical);
+    List<FoodSumList> sumEatKcal(int iuser, String start, String end);
 
     int sumEacKcal(int ical);
 
