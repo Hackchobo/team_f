@@ -11,5 +11,5 @@ public class FoodRecordEntity {
     private int uefKcal;
     private String ctnt;
     private String uefPic;
-
+    private String createdAt;
 }

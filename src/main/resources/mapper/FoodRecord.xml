@@ -19,7 +19,7 @@
 
 
     <select id="selRecordAll">
-        select imeal_record imealRecord,ifood,ical,uef_time uefTime,ctnt,uef_pic uefPic
+        select imeal_record imealRecord,ifood,ical,uef_time uefTime,uef_kcal uefKcal,ctnt,uef_pic uefPic
         from user_meal_record
     </select>
 
@@ -44,14 +44,18 @@
 
     <insert id="intFoodRecordDate">
         insert into user_meal_record
-        (ifood,ical,uef_time,uef_kcal,ctnt)
+        (ifood,ical,uef_time,uef_kcal,ctnt,created_at)
         values
-        (#{ifood},#{ical},#{uefTime},#{uefKcal},#{ctnt})
+        (#{ifood},#{ical},#{uefTime},#{uefKcal},#{ctnt},#{createdAt})
     </insert>
 
     <select id="selIfood" resultType="int">
         select f_kcal from food_category
         where ifood=#{ifood}
+    </select>
+    <select id="selCalCreated" resultType="String">
+        select created_at createdAt from calender
+        where ical=#{ical}
     </select>
 
     <select id="sumEatKcal" >
@@ -64,4 +68,5 @@
         WHERE C.iuser=#{iuser} AND date_format(A.created_at,'%Y-%m-%d') BETWEEN #{start} AND #{end}
         ORDER BY A.created_at asc;
     </select>
+
 </mapper>

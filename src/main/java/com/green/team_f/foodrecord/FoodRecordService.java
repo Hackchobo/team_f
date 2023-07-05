@@ -111,6 +111,7 @@ public class FoodRecordService {
 
     public int intFoodRecordDate(@RequestBody FoodRecordInsDto dto){
         int i = mapper.selIfood(dto.getIfood());
+        String s = mapper.selCalCreated(dto.getIcal());
         FoodRecordEntity entity=new FoodRecordEntity();
         switch(dto.getUefTime()){
             case 1:
@@ -125,7 +126,7 @@ public class FoodRecordService {
         }
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
-
+        entity.setCreatedAt(s);
         entity.setUefKcal(i);
         entity.setCtnt(dto.getCtnt());
         return mapper.intFoodRecordDate(entity);
