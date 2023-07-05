@@ -40,4 +40,17 @@
         select sum(uef_kcal) from user_meal_record
         where ical=#{ical}
     </select>
+
+
+    <insert id="intFoodRecordDate">
+        insert into user_meal_record
+        (ifood,ical,uef_time,uef_kcal,ctnt)
+        values
+        (#{ifood},#{ical},#{uefTime},#{uefKcal},#{ctnt})
+    </insert>
+
+    <select id="selIfood" resultType="int">
+        select f_kcal from food_category
+        where ifood=#{ifood}
+    </select>
 </mapper>

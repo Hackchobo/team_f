@@ -8,6 +8,7 @@ import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -86,5 +87,16 @@ public class FoodRecordService {
 
     public int sumEacKcal(int ical){
         return mapper.sumEacKcal(ical);
+    }
+
+    public int intFoodRecordDate(@RequestBody FoodRecordInsDto dto){
+        int i = mapper.selIfood(dto.getIfood());
+        FoodRecordEntity entity=new FoodRecordEntity();
+        entity.setIfood(dto.getIfood());
+        entity.setIcal(dto.getIcal());
+        entity.setUefTime(dto.getUefTime());
+        entity.setUefKcal(i);
+        entity.setCtnt(dto.getCtnt());
+        return mapper.intFoodRecordDate(entity);
     }
 }

@@ -71,4 +71,9 @@ public class FoodRecordController {
     public int getTotalEatKcal(@PathVariable int ical){
         return service.sumEacKcal(ical);
     }
+
+    @PostMapping
+    public int postRecordDate(@RequestBody FoodRecordInsDto dto){
+        return service.intFoodRecordDate(dto);
+    }
 }

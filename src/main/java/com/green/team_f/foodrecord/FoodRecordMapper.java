@@ -8,6 +8,8 @@ import java.util.List;
 @Mapper
 public interface FoodRecordMapper {
     int insFoodRecord(FoodRecordEntity entity);
+    int intFoodRecordDate(FoodRecordEntity entity);
+    int selIfood(int ifood);
     List<FoodRecordEntity> selRecordAll();
     int updRecord(FoodRecordEntity entity);
     int delRecord(int imealRecord);
