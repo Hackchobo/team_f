@@ -21,7 +21,7 @@ public class FoodCateController {
     private final FoodCateService service;
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    @Operation(summary = "음식카테고리 입력",description = ""+
+    @Operation(summary = "음식카테고리 입력(이미지)",description = ""+
             "foodName : 음식의 이름<br>"+
             "f_kcal : 음식의 칼로리")
     public int postFoodCate(@RequestPart MultipartFile img, FoodCateInsDto dto) {
