@@ -73,6 +73,11 @@ public class FoodRecordController {
     }
 
     @PostMapping
+    @Operation(summary = "유저 식사기록 입력",description = ""+
+            "ifood : 음식의 고유번호<br>"+
+            "ical : 캘린더의 고유번호<br>"+
+            "uef_time : 1(아침),2(점심),3(저녁)<br>"+
+            "ctnt : 음식기록 페이지의 코멘트<br><br>")
     public int postRecordDate(@RequestBody FoodRecordInsDto dto){
         return service.intFoodRecordDate(dto);
     }
