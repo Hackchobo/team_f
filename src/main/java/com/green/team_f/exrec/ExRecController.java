@@ -28,6 +28,15 @@ public class ExRecController {
         dto.setIhelCate(ihelCate);
         return service.selEx(dto);
     }
+
+
+    @Tag(name="운동카테고리목록")
+    @Operation(summary = "운동카테고리 전체목록",description = ""+
+            " 문자 배열 타입")
+    @GetMapping("/exlist")
+    public List<String> getHelCateList (){return service.getHelCateList();}
+
+
     @Tag(name="운동기록입력")
     @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description = ""+
             " uhPic:유저운동사진(이미지파일)<br>"+
@@ -39,10 +48,5 @@ public class ExRecController {
     public int postEx(@RequestPart MultipartFile uhPic,@RequestPart InsExRecDto dto) {
         return service.InsExRec(uhPic,dto);
     }
-    @Tag(name="운동카테고리목록")
-    @Operation(summary = "운동카테고리 전체목록",description = ""+
-            " 문자 배열 타입")
-    @GetMapping("/exlist")
-    public List<String> getHelCateList (){return service.getHelCateList();}
 
 }

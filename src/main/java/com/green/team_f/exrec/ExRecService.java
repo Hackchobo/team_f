@@ -1,9 +1,12 @@
 package com.green.team_f.exrec;
 
 
+import ch.qos.logback.core.util.FileUtil;
+import com.green.team_f.TeamFApplication;
 import com.green.team_f.exrec.model.InsExRecDto;
 import com.green.team_f.exrec.model.InsExRecDto2;
 import com.green.team_f.exrec.model.SelExDto;
+import com.green.team_f.exrec.model.UpdCalByExRecDto;
 import com.green.team_f.list.ListService;
 import com.green.team_f.list.model.InsCalenderDto;
 import com.green.team_f.util.FileUtils;
@@ -34,34 +37,56 @@ public class ExRecService {
     public List<String> getHelCateList (){return mapper.getHelCateList();}
 
     public int InsExRec(MultipartFile uhPic, InsExRecDto dto){
+        //해당 iuser 값과 날짜값으로 ical 데이터가 존재하는지 여부를 확인
+        //icalForUserOftheDay = ical 값이 담겨진다.
+
         InsCalenderDto insCalenderDto = new InsCalenderDto();
-        insCalenderDto.setIuser(dto.getIuser());
         insCalenderDto.setRecDate(dto.getRecDate());
-        Long ical = listService.getIcalByuserAndDate(insCalenderDto);
+        insCalenderDto.setIuser(dto.getIuser());
+        Long icalForUserOftheDay = listService.getIcalByuserAndDate(insCalenderDto);
+        //mapper.getIcalByuserAndDate(entity);
+        //캘린더에 값이 없을 경우 입력하기 위한 정보 입력
 
-        InsExRecDto2 dto2 = new InsExRecDto2();
+        InsCalenderDto calenderDto = new InsCalenderDto();
+        calenderDto.setIuser(dto.getIuser());
+        calenderDto.setRecDate(dto.getRecDate());
+
+        //캘린더
+        //운동pk를 보내서 입력된 운동 별 칼로리 얻기
         SelExDto sDto = new SelExDto();
-
         sDto.setIhelCate(dto.getIhelCate());
-        dto2.setIhelCate(dto.getIhelCate());
-        int exKcalPerMin = selEx(sDto);//운동pk를 보내서 입력된 운동 별 칼로리 얻기
+        int exKcalPerMin = selEx(sDto);
 
-        dto2.setIcal(ical);
-        dto2.setUhKcal((long)exKcalPerMin * dto.getTime()); //분당 소모칼로리 * 운동시간
+        //소모칼로리 : 분당 소모칼로리 * 운동시간 = 총 소모칼로리
+        int subTotalKcal = exKcalPerMin * dto.getTime();
+
+        //dto - > dto2  요구값 -> DB저장 부분 + ical 부분 주입
+        InsExRecDto2 dto2 = new InsExRecDto2();
+        dto2.setIhelCate(dto.getIhelCate());
+        dto2.setUhKcal(subTotalKcal);
         dto2.setCtnt(dto.getCtnt());
         dto2.setTime(dto.getTime());
+        dto2.setIcal(icalForUserOftheDay);
+
 
         //파일을 저장하는 부분
         String savedName = FileUtils.makeRandomFileNm(uhPic.getOriginalFilename());
         dto2.setUhPic(savedName);
+        //최종 데이터 저장 부분
+        int insExRecResult = mapper.InsExRec(dto2);
 
-        mapper.InsExRec(dto2);
+        //달력업데이트 부분
+        UpdCalByExRecDto updCalByExRecDto = new UpdCalByExRecDto();
+        updCalByExRecDto.setIcal(icalForUserOftheDay);
+        updCalByExRecDto.setIuser(dto.getIuser());
+        updCalByExRecDto.setRecDate(dto.getRecDate());
+        updCalByExRecDto.setUhKcal(subTotalKcal);
 
+        int updCalByExRecResult = mapper.upCalenderByHelRec(updCalByExRecDto);
 
         //path, 디렉토리명 만들기
-        String dirPath = String.format("%s/health/%s",FileUtils.getAbsolutePath(fileDir),dto.getIcal());
-
-
+        //파일전송
+        String dirPath = String.format("%s/health/%s",fileDir,dto.getIuser());
         File file = new File(dirPath);
 
         if(!(file.exists())){
@@ -74,7 +99,8 @@ public class ExRecService {
             uhPic.transferTo(target);
         }catch(IOException e){
             e.printStackTrace();
-            return 0;}
+            return 0;
+        }
         return 1;
     }
 

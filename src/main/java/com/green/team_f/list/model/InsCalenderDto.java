@@ -7,4 +7,5 @@ public class InsCalenderDto {
     private long iuser;
     private String recDate;
     private Long ical;
+    private int bmr;
 }
