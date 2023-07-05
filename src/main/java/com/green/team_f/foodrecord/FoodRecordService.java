@@ -4,7 +4,7 @@ package com.green.team_f.foodrecord;
 import com.green.team_f.foodrecord.model.FoodRecordEntity;
 import com.green.team_f.foodrecord.model.FoodRecordInsDto;
 import com.green.team_f.foodrecord.model.FoodRecordUpdDto;
-import com.green.team_f.util.FileUtil;
+import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -24,12 +24,12 @@ public class FoodRecordService {
 
     public int insFoodRecord(MultipartFile img, FoodRecordInsDto dto){
 
-        String path = fileDir + "/"+dto.getIcal();
+        String path = FileUtils.getAbsolutePath(fileDir) + "/"+dto.getIcal();
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
         }
-        String randomName = FileUtil.makeRandomFileNm(img.getOriginalFilename());
+        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
         String namePath = path +"/"+ randomName;
         File file1 = new File(namePath);
         try {
@@ -54,12 +54,12 @@ public class FoodRecordService {
 
 
     public int updRecord(MultipartFile img, FoodRecordUpdDto dto){
-        String path = fileDir + "/"+dto.getIcal();
+        String path = FileUtils.getAbsolutePath(fileDir) + "/"+dto.getIcal();
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
         }
-        String randomName = FileUtil.makeRandomFileNm(img.getOriginalFilename());
+        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
         String namePath = path +"/"+ randomName;
         File file1 = new File(namePath);
         try {

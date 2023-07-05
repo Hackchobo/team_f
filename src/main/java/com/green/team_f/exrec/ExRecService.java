@@ -6,7 +6,7 @@ import com.green.team_f.exrec.model.InsExRecDto2;
 import com.green.team_f.exrec.model.SelExDto;
 import com.green.team_f.list.ListService;
 import com.green.team_f.list.model.InsCalenderDto;
-import com.green.team_f.util.FileUtil;
+import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +25,7 @@ public class ExRecService {
     private final ListService listService;
     private final ExRecMapper mapper;
     @Value("${file3.dir}")
-    private String filedir;
+    private String fileDir;
 
     public int selEx(SelExDto dto){
         return mapper.selEx(dto);
@@ -52,14 +52,14 @@ public class ExRecService {
         dto2.setTime(dto.getTime());
 
         //파일을 저장하는 부분
-        String savedName = FileUtil.makeRandomFileNm(uhPic.getOriginalFilename());
+        String savedName = FileUtils.makeRandomFileNm(uhPic.getOriginalFilename());
         dto2.setUhPic(savedName);
 
         mapper.InsExRec(dto2);
 
 
         //path, 디렉토리명 만들기
-        String dirPath = String.format("%s/health/%s",filedir,dto.getIcal());
+        String dirPath = String.format("%s/health/%s",FileUtils.getAbsolutePath(fileDir),dto.getIcal());
 
 
         File file = new File(dirPath);
