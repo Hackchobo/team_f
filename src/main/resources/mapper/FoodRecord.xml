@@ -19,7 +19,7 @@
 
 
     <select id="selRecordAll">
-        select imeal_record imealRecord,ifood,ical,uef_time uefTime,uef_kcal uefKcal,ctnt,uef_pic uefPic
+        select imeal_record imealRecord,ifood,ical,uef_time uefTime,uef_kcal uefKcal,ctnt,uef_pic uefPic,created_at createdAt
         from user_meal_record
     </select>
 
@@ -66,7 +66,7 @@
         inner join user C
         on B.iuser=C.iuser
         WHERE C.iuser=#{iuser} AND date_format(A.created_at,'%Y-%m-%d') BETWEEN #{start} AND #{end}
-        ORDER BY A.created_at asc;
+        ORDER BY A.created_at asc and A.uef_time asc;
     </select>
 
 </mapper>
