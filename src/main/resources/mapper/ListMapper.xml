@@ -12,13 +12,15 @@
     </select>
 
     <select id="selHelList">
-        SELECT B.ihel_record ihelRecord, B.ihel_cate ihelCate, B.uh_kcal uhKcal, B.ctnt
-                , B.uh_pic uhPic, B.time time
+        SELECT B.ihel_record ihelRecord, B.uh_kcal uhKcal, B.ctnt
+                , B.uh_pic uhPic, B.time time, C.hel_name helName
         FROM calender A
         INNER JOIN user_health_record B
         ON A.ical = B.ical
+        INNER JOIN health_category C
+        ON B.Ihel_cate = C.Ihel_cate
         WHERE A.created_at = #{date} and iuser = #{iuser}
-        ORDER BY B.time
+        ORDER BY B.ihel_record
     </select>
 
 
