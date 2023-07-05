@@ -70,7 +70,7 @@ public class FoodRecordController {
     @GetMapping("/{iuser}")
     @Operation(summary = "음식의 총칼로리",description = "ResponseBody의 값이 해당유저의 하루 총 섭취칼로리")
     public FoodSum getTotalEatKcal(@PathVariable int iuser, @RequestParam String start, @RequestParam String end){
-        return service.sumEacKcal(iuser,start,end);
+        return service.sumEatKcal(iuser,start,end);
     }
 
     @PostMapping

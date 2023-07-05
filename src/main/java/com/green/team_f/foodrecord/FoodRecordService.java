@@ -131,7 +131,7 @@ public class FoodRecordService {
         return mapper.intFoodRecordDate(entity);
     }
 
-    public FoodSum sumEacKcal(int iuser, String start, String end){
+    public FoodSum sumEatKcal(int iuser, String start, String end){
         FoodSum foodSum=new FoodSum();
         List<FoodSumList> foodSums = mapper.sumEatKcal(iuser,start,end);
         foodSum.setIuser(iuser);
