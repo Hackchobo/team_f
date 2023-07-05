@@ -29,6 +29,7 @@ public class FoodCateController {
     }
 
 
+
     @GetMapping
     @Operation(summary = "모든음식 카테고리 조회",description = ""+
     "ifood : 음식의 고유번호<br>"+

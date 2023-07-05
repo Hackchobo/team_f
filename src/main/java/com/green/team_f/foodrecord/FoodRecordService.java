@@ -16,7 +16,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class FoodRecordService {
+
     private final FoodRecordMapper mapper;
+
     @Value("${file20.dir}")
     private String fileDir;
 
@@ -83,6 +85,6 @@ public class FoodRecordService {
 
 
     public int sumEacKcal(int ical){
-        return sumEacKcal(ical);
+        return mapper.sumEacKcal(ical);
     }
 }

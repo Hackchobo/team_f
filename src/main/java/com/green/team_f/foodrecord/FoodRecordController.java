@@ -71,5 +71,4 @@ public class FoodRecordController {
     public int getTotalEatKcal(@PathVariable int ical){
         return service.sumEacKcal(ical);
     }
-
 }
