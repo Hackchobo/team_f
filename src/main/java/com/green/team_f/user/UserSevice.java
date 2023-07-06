@@ -92,6 +92,7 @@ public class UserSevice {
         entity.setGender(dto.getGender());
         entity.setUsepic(dto.getUsepic());
         entity.setBmr(dto.getBmr());
+        entity.setGoal(dto.getGoal());
         return mapper.selUser(entity);
     }
 
@@ -130,11 +131,11 @@ public class UserSevice {
         return mapper.updUserGoal(dto);
     }
 
-    public UserPatchGoalVo selUserGoal(UserEntity entity){
+    /*public UserPatchGoalVo selUserGoal(UserEntity entity){
         UserPatchGoalVo vo = new UserPatchGoalVo();
         entity.setGoal(vo.getGoal());
         return mapper.selUserGoal(entity);
-    }
+    }*/
 
 
 }

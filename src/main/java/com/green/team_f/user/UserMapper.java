@@ -10,5 +10,5 @@ public interface UserMapper {
     UserSelDto selUser(UserEntity entity);
     int delUser(UserRemoveDto dto);
     int updUserGoal(UserPatchGoalDto dto);
-    UserPatchGoalVo selUserGoal(UserEntity entity);
+//    UserPatchGoalVo selUserGoal(UserEntity entity);
 }

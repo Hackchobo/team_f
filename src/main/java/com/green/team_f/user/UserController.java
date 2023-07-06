@@ -28,7 +28,7 @@ public class UserController {
             "age:[int]회원 나이<br>"+
             "height:[int]회원 키<br>"+
             "weight:[int]회원 몸무게<br>"+
-            "gender:[string]회원 성별"
+            "gender:[string]회원 성별<br>"
     )
     public int postUser(@RequestBody UserInsDto dto){
         return service.insUser(dto);
@@ -74,7 +74,7 @@ public class UserController {
         return service.updUserGoal(dto);
     }
 
-    @GetMapping("/{iuser}/goal")
+    /*@GetMapping("/{iuser}/goal")
     @Operation(summary = "회원의 목표표시",description = ""+
             "iuser:회원의 PK값(몇번째 등록된 사람인지)<br>"
     )
@@ -82,6 +82,6 @@ public class UserController {
         UserEntity entity = new UserEntity();
         entity.setIuser(iuser);
         return service.selUserGoal(entity);
-    }
+    }*/
 
 }

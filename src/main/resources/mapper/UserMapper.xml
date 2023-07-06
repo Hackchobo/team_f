@@ -16,7 +16,7 @@
     </update>
 
     <select id="selUser" resultType="UserSelDto">
-        select uid, name, age, height, weight, gender, usepic, bmr
+        select uid, name, age, height, weight, gender, usepic, bmr, goal
         from user
         where iuser = #{iuser}
     </select>
@@ -32,10 +32,10 @@
         where iuser = #{iuser}
     </update>
 
-    <select id="selUserGoal" resultType="UserPatchGoalVo">
+    <!--<select id="selUserGoal" resultType="UserPatchGoalVo">
         select iuser, goal
         from user
         where iuser = #{iuser}
-    </select>
+    </select>-->
 
 </mapper>
