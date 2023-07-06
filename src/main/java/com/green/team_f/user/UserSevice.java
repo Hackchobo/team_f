@@ -50,7 +50,7 @@ public class UserSevice {
     } // 회원등록 (사진제외 NULL값으로 날라감)
 
     public int updUserPic(MultipartFile pic, UserPatchPicDto dto){
-        String centerPath = String.format("user/%d", dto.getIuser());
+        String centerPath = String.format("%s/user/%d",fileDir, dto.getIuser());
         String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
 
         File dic = new File(dicPath);           //폴더가 없을 경우 폴더를 생성
