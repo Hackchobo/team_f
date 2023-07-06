@@ -1,8 +1,8 @@
 package com.green.team_f.exrec;
 
-import com.green.team_f.exrec.model.InsExRecDto;
-import com.green.team_f.exrec.model.SelExDto;
+import com.green.team_f.exrec.model.*;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class ExRecController {
     @Operation(summary = "운동카테고리 전체목록",description = ""+
             " 문자 배열 타입")
     @GetMapping("/exlist")
-    public List<String> getHelCateList (){return service.getHelCateList();}
+    public List<SelListKcalVo> getHelCateList (){return service.getHelCateList();}
 
 
     @Tag(name="운동기록입력")
@@ -47,6 +47,12 @@ public class ExRecController {
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public int postEx(@RequestPart MultipartFile uhPic,@RequestPart InsExRecDto dto) {
         return service.InsExRec(uhPic,dto);
+    }
+
+    @Operation(summary = "운동,시간 입력시 기록예정정보 출력", description ="출력내용 : 운동이름(helName), 분당소모칼로리(hKcal), 운동시간(time), 총 소모칼로리(totalHelKcal)")
+    @GetMapping("/subinfo")
+    public SelSubInfoForExRecVo getSubInfoByMinAndHelCate(@RequestBody SelSubInfoForExRecDto dto){
+        return service.getSubInfoByMinAndHelCate(dto);
     }
 
 
