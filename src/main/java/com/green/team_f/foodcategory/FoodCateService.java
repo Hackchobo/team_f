@@ -7,6 +7,7 @@ import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -21,26 +22,27 @@ public class FoodCateService {
     private String fileDir;
 
     public int insFoodCate(MultipartFile img, FoodCateInsDto dto) {
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodcate" ;
-        File file = new File(path);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
-        String namePath = path +"/"+ randomName;
-        File file1 = new File(namePath);
-        try {
-            img.transferTo(file1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        FoodCateEntity entity = new FoodCateEntity();
-        entity.setFoodName(dto.getFoodName());
-        entity.setF_kcal(dto.getF_kcal());
-        System.out.println(dto.getF_kcal());
-        entity.setFoodPic(namePath);
-        return mapper.insFoodCate(entity);
-    }
+
+       String path = FileUtils.getAbsolutePath(fileDir)+"/foodcate" ;
+       File file = new File(path);
+       if (!file.exists()) {
+           file.mkdirs();
+       }
+       String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
+       String namePath = path +"/"+ randomName;
+       File file1 = new File(namePath);
+       try {
+           img.transferTo(file1);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       FoodCateEntity entity = new FoodCateEntity();
+       entity.setFoodName(dto.getFoodName());
+       entity.setF_kcal(dto.getF_kcal());
+       System.out.println(dto.getF_kcal());
+       entity.setFoodPic(namePath);
+       return mapper.insFoodCate(entity);
+   }
 
 
     public List<FoodCateEntity> selFoodCate() {

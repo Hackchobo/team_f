@@ -8,7 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface FoodRecordMapper {
-
     int intFoodRecordDate(FoodRecordEntity entity);
     int selIfood(int ifood);
     String selCalCreated(int ical);
