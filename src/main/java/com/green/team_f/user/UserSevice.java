@@ -38,13 +38,14 @@ public class UserSevice {
         if (!(gender == 'M' || gender == 'F')) {
             return -1;
         }
-
         //기초대사량 측정
-        if(entity.getGender() == 'M'){
-          entity.setBmr(66.47 +(13.75 * dto.getHeight())+(5 * dto.getHeight())-(6.76 * dto.getAge()));
-        } else if(entity.getGender() == 'F'){
-          entity.setBmr(665.1+(9.56 * dto.getHeight())+(1.85 * dto.getHeight()) - (4.68 * dto.getAge()));
+        if(entity.getGender() == 'F'){
+            double bmr = Math.round((665.1+(9.56 * dto.getHeight())+(1.85 * dto.getHeight())-(4.68 * dto.getAge()))*100)/100.0;
+            entity.setBmr(bmr);
+        } else if(entity.getGender()== 'M'){
+            entity.setBmr(66.47 +(13.75 * dto.getHeight())+(5 * dto.getHeight())-(6.76 * dto.getAge()));
         }
+
         return mapper.insUser(entity);
     } // 회원등록 (사진제외 NULL값으로 날라감)
 
