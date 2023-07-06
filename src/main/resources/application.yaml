@@ -22,15 +22,4 @@ springdoc:
     operations-sorter : method
 
 file:
-  dir: /home/download/F_Hpic
-
-file3:
-  dir: /home/download/exrec
-
-
-file10:
-  dir: /home/download/foodcate
-
-
-file20:
-  dir: /home/download/foodrecord
+  dir: /home/download
