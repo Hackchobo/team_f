@@ -10,5 +10,4 @@ public class InsExRecDto {
     private long ihelCate;
     private String ctnt;
     private int time;
-    private MultipartFile uhPic;
 }

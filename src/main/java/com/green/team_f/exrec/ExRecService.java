@@ -36,7 +36,7 @@ public class ExRecService {
 
     public List<String> getHelCateList (){return mapper.getHelCateList();}
 
-    public int InsExRec(InsExRecDto dto){
+    public int InsExRec(MultipartFile uhPic, InsExRecDto dto){
         //해당 iuser 값과 날짜값으로 ical 데이터가 존재하는지 여부를 확인
         //icalForUserOftheDay = ical 값이 담겨진다.
 
@@ -70,7 +70,6 @@ public class ExRecService {
 
 
         //파일을 저장하는 부분
-        MultipartFile uhPic = dto.getUhPic();
         String savedName = FileUtils.makeRandomFileNm(uhPic.getOriginalFilename());
         dto2.setUhPic(savedName);
         //최종 데이터 저장 부분

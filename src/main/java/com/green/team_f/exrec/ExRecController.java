@@ -44,9 +44,9 @@ public class ExRecController {
             " uhKcal:시간당소모량(int)<br>" +
             " ctnt:유저메모(String, text)<br>" +
             " time:운동시간(ex:30분=30,1시간 20분 =80)")
-    @PostMapping
-    public int postEx(InsExRecDto dto) {
-        return service.InsExRec(dto);
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public int postEx(@RequestPart MultipartFile uhPic,@RequestPart InsExRecDto dto) {
+        return service.InsExRec(uhPic,dto);
     }
 
 
