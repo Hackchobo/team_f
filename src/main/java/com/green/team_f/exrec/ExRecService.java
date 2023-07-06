@@ -3,10 +3,7 @@ package com.green.team_f.exrec;
 
 import ch.qos.logback.core.util.FileUtil;
 import com.green.team_f.TeamFApplication;
-import com.green.team_f.exrec.model.InsExRecDto;
-import com.green.team_f.exrec.model.InsExRecDto2;
-import com.green.team_f.exrec.model.SelExDto;
-import com.green.team_f.exrec.model.UpdCalByExRecDto;
+import com.green.team_f.exrec.model.*;
 import com.green.team_f.list.ListService;
 import com.green.team_f.list.model.InsCalenderDto;
 import com.green.team_f.util.FileUtils;
@@ -34,7 +31,7 @@ public class ExRecService {
         return mapper.selEx(dto);
     }
 
-    public List<String> getHelCateList (){return mapper.getHelCateList();}
+    public List<SelListKcalVo> getHelCateList (){return mapper.getHelCateList();}
 
     public int InsExRec(MultipartFile uhPic, InsExRecDto dto){
         //해당 iuser 값과 날짜값으로 ical 데이터가 존재하는지 여부를 확인
@@ -102,6 +99,27 @@ public class ExRecService {
             return 0;
         }
         return 1;
+    }
+
+    public SelSubInfoForExRecVo getSubInfoByMinAndHelCate(SelSubInfoForExRecDto dto){
+
+        SelSubInfoForExRecVo vo = new SelSubInfoForExRecVo();
+        //(1)운동시간 vo로 전달
+        vo.setTime(dto.getTime());
+
+        //(2)운동pk로 운동이름얻기
+        SelExDto sDto = new SelExDto();
+        sDto.setIhelCate(dto.getIhelCate());
+        vo.setHelName(mapper.selExName(sDto));
+
+        //(3)운동pk를 보내서 입력된 운동 별 칼로리 얻기
+        int exKcalPerMin = selEx(sDto);
+        vo.setHKcal(exKcalPerMin);
+
+        //(4)소모칼로리 : 분당 소모칼로리 * 운동시간 = 총 소모칼로리
+        int subTotalKcal = exKcalPerMin * dto.getTime();
+        vo.setTotalHelKcal(subTotalKcal);
+        return vo;
     }
 
 }
