@@ -70,7 +70,7 @@ public class ExRecService {
         String savedName = FileUtils.makeRandomFileNm(uhPic.getOriginalFilename());
         dto2.setUhPic(savedName);
         //최종 데이터 저장 부분
-        int insExRecResult = mapper.InsExRec(dto2);
+        mapper.InsExRec(dto2);
 
         //달력업데이트 부분
         UpdCalByExRecDto updCalByExRecDto = new UpdCalByExRecDto();
@@ -83,7 +83,7 @@ public class ExRecService {
 
         //path, 디렉토리명 만들기
         //파일전송
-        String dirPath = String.format("%s/health/%s",FileUtils.getAbsolutePath(fileDir),dto.getIuser());
+        String dirPath = String.format("%s/exrec/%s",FileUtils.getAbsolutePath(fileDir),icalForUserOftheDay);
         File file = new File(dirPath);
 
         if(!(file.exists())){
