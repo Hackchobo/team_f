@@ -24,7 +24,7 @@ import java.util.List;
 public class ExRecService {
     private final ListService listService;
     private final ExRecMapper mapper;
-    @Value("${file3.dir}")
+    @Value("${file.dir}")
     private String fileDir;
 
     public int selEx(SelExDto dto){

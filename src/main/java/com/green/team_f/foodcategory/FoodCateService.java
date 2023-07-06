@@ -17,11 +17,11 @@ import java.util.List;
 public class FoodCateService {
     private final FoodCateMapper mapper;
 
-    @Value("${file10.dir}")
+    @Value("${file.dir}")
     private String fileDir;
 
     public int insFoodCate(MultipartFile img, FoodCateInsDto dto) {
-        String path = FileUtils.getAbsolutePath(fileDir) + "/" + dto.getFoodName();
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodcate" ;
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -48,7 +48,7 @@ public class FoodCateService {
     }
 
     public int updFoodCate(MultipartFile img, FoodCateUpDto dto){
-        String path = FileUtils.getAbsolutePath(fileDir) + "/" + dto.getFoodName();
+        String path = FileUtils.getAbsolutePath(fileDir) +"/foodcate";
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
