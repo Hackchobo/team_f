@@ -96,7 +96,7 @@ public class UserSevice {
     }
 
     public int delUser(UserRemoveDto dto){
-        String path = String.format("D:/download/F_Hpic/user/%d", dto.getIuser());
+        String path = String.format("%s/user/%d",fileDir, dto.getIuser());
         //String dicPath = String.format("%s", fileDir);
         /*File dic = new File(path);           //폴더가 있을 경우 폴더를 삭제
         if(dic.exists()) {
