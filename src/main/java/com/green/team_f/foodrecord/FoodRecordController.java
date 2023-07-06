@@ -68,7 +68,10 @@ public class FoodRecordController {
 
 
     @GetMapping("/{iuser}")
-    @Operation(summary = "음식의 총칼로리",description = "ResponseBody의 값이 해당유저의 하루 총 섭취칼로리")
+    @Operation(summary = "한 유저의 해당 기간 섭취 칼로리",description = ""+
+    "iuser : 유저의 번호"+
+    "star : 조회 시작날짜"+
+    "end : 조회 끝날날짜")
     public FoodSum getTotalEatKcal(@PathVariable int iuser, @RequestParam String start, @RequestParam String end){
         return service.sumEatKcal(iuser,start,end);
     }

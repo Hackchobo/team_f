@@ -7,7 +7,6 @@ import lombok.Data;
 public class FoodSumList {
 
     private int uefKcal;
-    private String uefTime;
     private String createdAt;
 
 
