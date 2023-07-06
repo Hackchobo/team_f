@@ -28,8 +28,8 @@
         where ical = #{ical} and iuser = #{iuser}
     </update>
 
-    <select id="getHelCateList" parameterType="String">
-        select hel_name
+    <select id="getHelCateList">
+        select hel_name helName, h_Kcal hKcal
         from health_category
     </select>
 </mapper>

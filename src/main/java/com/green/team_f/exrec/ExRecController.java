@@ -49,7 +49,7 @@ public class ExRecController {
         return service.InsExRec(uhPic,dto);
     }
 
-    @Operation(summary = "운동,시간 입력시 기록예정정보 출력", description ="출력내용 : 운동이름(helName), 분당소모칼로리(hKcal), 운동시간(time), 총 소모칼로리(totalHelKcal)")
+    @Operation(summary = "운동,시간 입력시 기록예정정보 출력", description =" 출력내용 : 운동이름(helName), 분당소모칼로리(hKcal), 운동시간(time), 총 소모칼로리(totalHelKcal)")
     @GetMapping("/subinfo")
     public SelSubInfoForExRecVo getSubInfoByMinAndHelCate(@RequestBody SelSubInfoForExRecDto dto){
         return service.getSubInfoByMinAndHelCate(dto);
