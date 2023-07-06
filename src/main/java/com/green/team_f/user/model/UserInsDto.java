@@ -11,4 +11,5 @@ public class UserInsDto {
     private int height;
     private int weight;
     private char gender;
+    private String goal;
 }
