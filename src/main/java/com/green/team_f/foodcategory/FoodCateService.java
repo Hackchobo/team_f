@@ -7,7 +7,6 @@ import com.green.team_f.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -40,7 +39,7 @@ public class FoodCateService {
        entity.setFoodName(dto.getFoodName());
        entity.setF_kcal(dto.getF_kcal());
        System.out.println(dto.getF_kcal());
-       entity.setFoodPic(namePath);
+       entity.setFoodPic(randomName);
        return mapper.insFoodCate(entity);
    }
 
@@ -67,7 +66,7 @@ public class FoodCateService {
         entity.setIfood(dto.getIfood());
         entity.setFoodName(dto.getFoodName());
         entity.setF_kcal(dto.getF_kcal());
-        entity.setFoodPic(namePath);
+        entity.setFoodPic(randomName);
 
         return mapper.updFoodCate(entity);
     }
