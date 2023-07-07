@@ -21,7 +21,7 @@ public class FoodCateService {
     private String fileDir;
 
     public int insFoodCate(MultipartFile img, FoodCateInsDto dto) {
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodcate" ;
+        String path =String.format(FileUtils.getAbsolutePath(fileDir)+"/foodcate");
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -38,7 +38,7 @@ public class FoodCateService {
         entity.setFoodName(dto.getFoodName());
         entity.setF_kcal(dto.getF_kcal());
         System.out.println(dto.getF_kcal());
-        entity.setFoodPic(namePath);
+        entity.setFoodPic(randomName);
         return mapper.insFoodCate(entity);
     }
 
@@ -48,8 +48,9 @@ public class FoodCateService {
     }
 
     public int updFoodCate(MultipartFile img, FoodCateUpDto dto){
-        String path = FileUtils.getAbsolutePath(fileDir) +"/foodcate";
+        String path = String.format(FileUtils.getAbsolutePath(fileDir)+"/foodcate");
         File file = new File(path);
+        System.out.println(path);
         if (!file.exists()) {
             file.mkdirs();
         }
@@ -65,7 +66,7 @@ public class FoodCateService {
         entity.setIfood(dto.getIfood());
         entity.setFoodName(dto.getFoodName());
         entity.setF_kcal(dto.getF_kcal());
-        entity.setFoodPic(namePath);
+        entity.setFoodPic(randomName);
 
         return mapper.updFoodCate(entity);
     }

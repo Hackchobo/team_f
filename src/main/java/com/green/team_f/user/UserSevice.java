@@ -52,6 +52,7 @@ public class UserSevice {
     public int updUserPic(MultipartFile pic, UserPatchPicDto dto){
         String centerPath = String.format("%s/user/%d",fileDir, dto.getIuser());
         String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
+        System.out.println(dicPath);
 
         File dic = new File(dicPath);           //폴더가 없을 경우 폴더를 생성
         if(!dic.exists()) {
@@ -62,13 +63,14 @@ public class UserSevice {
         String savedFileName = FileUtils.makeRandomFileNm(originFileName);
         String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
         String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
+        System.out.println(targetPath);
         File target = new File(targetPath);
         try {
             pic.transferTo(target);
         }catch (Exception e) {
             return 0;
         }
-        dto.setUsepic(savedFilePath);
+        dto.setUsepic(savedFileName);
         try {
             int result = mapper.updUserPic(dto);
             if(result == 0) {
