@@ -29,8 +29,8 @@
             SELECT ical FROM calender WHERE iuser = #{iuser} AND created_at = #{recDate}
         </selectKey>
         INSERT INTO calender
-        (iuser, created_at, totalhel_kcal, ex_kcal)
-        SELECT #{iuser}, #{recDate}, #{bmr}, -#{bmr}
+        (iuser, created_at, ex_kcal)
+        SELECT #{iuser}, #{recDate}, -#{bmr}
         FROM DUAL
         WHERE NOT EXISTS (
         SELECT created_at
