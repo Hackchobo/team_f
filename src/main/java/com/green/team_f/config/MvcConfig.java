@@ -12,8 +12,10 @@ import java.nio.file.Paths;
 @Slf4j
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
+
     @Value("${file.dir}")
     private String fileDir;
+
 
 
     @Override

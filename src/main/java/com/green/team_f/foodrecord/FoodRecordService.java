@@ -21,42 +21,7 @@ public class FoodRecordService {
     @Value("${file.dir}")
     private String fileDir;
 
-    public int insFoodRecord(MultipartFile img, FoodRecordInsDto dto){
 
-        String path = FileUtils.getAbsolutePath(fileDir) + "/foodrecord"+dto.getIcal();
-        File file = new File(path);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
-        String namePath = path +"/"+ randomName;
-        File file1 = new File(namePath);
-        try {
-            img.transferTo(file1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        FoodRecordEntity entity=new FoodRecordEntity();
-        switch(dto.getUefTime()){
-            case 1:
-                entity.setUefTime("아침");
-                break;
-            case 2:
-                entity.setUefTime("점심");
-                break;
-            case 3:
-                entity.setUefTime("저녁");
-                break;
-        }
-        entity.setIcal(dto.getIcal());
-        entity.setIfood(dto.getIfood());
-
-        entity.setUefPic(namePath);
-        entity.setCtnt(dto.getCtnt());
-
-        return mapper.insFoodRecord(entity);
-    }
 
     public List<FoodRecordEntity> selRecordAll(){
         return mapper.selRecordAll();
@@ -138,5 +103,25 @@ public class FoodRecordService {
         foodSum.setIuser(iuser);
         foodSum.setList(foodSums);
         return foodSum;
+    }
+
+
+    public int updImg(MultipartFile img,int imealRecord){
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodRecord/"+imealRecord ;
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
+        String namePath = path +"/"+ randomName;
+        File file1 = new File(namePath);
+        try {
+            img.transferTo(file1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mapper.updImg(namePath,imealRecord);
+
     }
 }

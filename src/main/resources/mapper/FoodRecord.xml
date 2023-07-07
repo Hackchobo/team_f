@@ -12,6 +12,7 @@
     </insert>
 
 
+
     <select id="selIuserDate" resultType="int">
         SELECT ical FROM calender
         WHERE ical=#{ical}
@@ -70,6 +71,11 @@
         ORDER BY A.created_at asc;
     </select>
 
+    <update id="updImg">
+        update user_meal_record
+        set uef_pic=#{img}
+        where imeal_record=#{imealRecord}
+    </update>
 
 
 </mapper>

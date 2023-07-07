@@ -23,17 +23,6 @@ public class FoodRecordController {
     private final FoodRecordService service;
 
 
-    @PostMapping(value = "/{iuser}",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    @Operation(summary = "유저 식사기록 입력",description = ""+
-            "ifood : 음식의 고유번호<br>"+
-            "ical : 캘린더의 고유번호<br>"+
-            "uef_time : 1(아침),2(점심),3(저녁)<br>"+
-            "ctnt : 음식기록 페이지의 코멘트<br><br>"+
-
-            "-1이 넘어오면 식사기록에 이미 값이 있다")
-    public int postRecord(@RequestPart MultipartFile img , FoodRecordInsDto dto){
-        return service.insFoodRecord(img,dto);
-    }
 
     @GetMapping
     @Operation(summary = "모든유저 식사기록 정보",description = ""+
@@ -86,5 +75,10 @@ public class FoodRecordController {
         return service.intFoodRecordDate(dto);
     }
 
+
+    @PatchMapping(value = "/img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
+        return service.updImg(img,imealRecord);
+    }
 
 }
