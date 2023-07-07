@@ -31,6 +31,13 @@ public class ListService {
         return mapper.selHelList(entity);
     }
 
+    public int delMealList(ListSelAllEntity entity){
+        return mapper.delMealList(entity);
+    }
+    public int delHelList(ListSelAllEntity entity){
+        return mapper.delHelList(entity);
+    }
+
     //(1) user, 날짜값을 보냈을때 Long 값으로 ical 반환
     //(2) 캘린더 최초 기록 삽입시 회원의 bmr수치 반영,
     // 업데이트시에는 bmr수치 미반영할 수 있음.

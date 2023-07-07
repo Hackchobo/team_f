@@ -45,6 +45,26 @@ public class ListController {
         return service.selHelList(entity);
     }
 
+    @DeleteMapping("/{imealRecord}/meal")
+    @Operation(summary = "음식 리스트 삭제",description = ""+
+            "imealRecord:음식 리스트 번호<br>"
+    )
+    public int delMeal(@PathVariable int imealRecord){
+        ListSelAllEntity entity = new ListSelAllEntity();
+        entity.setImealRecord(imealRecord);
+        return service.delMealList(entity);
+    }
+    @DeleteMapping("/{ihelRecord}/hel")
+    @Operation(summary = "운동 리스트 삭제",description = ""+
+            "ihelRecord:운동 리스트 번호<br>"
+    )
+    public int delHel(@PathVariable int ihelRecord){
+        ListSelAllEntity entity = new ListSelAllEntity();
+        entity.setIhelRecord(ihelRecord);
+        return service.delHelList(entity);
+    }
+
+
 
     @GetMapping("/icalTest")
     @Operation(summary = "백엔드용 메서드입니다", description ="iuser : int, recDate : yyyy-mm-dd or yyyymmdd<br>"+
