@@ -13,6 +13,8 @@ import java.util.List;
 public interface ListMapper {
     List<ListSelMealVo> selMealList(ListSelAllEntity entity);
     List<ListSelHelVo> selHelList(ListSelAllEntity entity);
+    int delMealList(ListSelAllEntity entity);
+    int delHelList(ListSelAllEntity entity);
 
     int InsCalenderDataForRec(InsCalenderDto dto);
     int getIuserBmr(GetDataOfTodayDto dto);

@@ -22,6 +22,16 @@
         WHERE A.created_at = #{date} and iuser = #{iuser}
         ORDER BY B.ihel_record
     </select>
+    <delete id="delMealList">
+        DELETE
+        from user_meal_record
+        WHERE imeal_record = #{imealRecord};
+    </delete>
+    <delete id="delHelList">
+        DELETE
+        from user_health_record
+        WHERE ihel_record = #{ihelRecord};
+    </delete>
 
 
     <insert id="InsCalenderDataForRec" useGeneratedKeys="true" keyProperty="ical">
