@@ -9,6 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface FoodRecordMapper {
+    int insFoodRecord(FoodRecordEntity entity);
     int intFoodRecordDate(FoodRecordEntity entity);
     int selIfood(int ifood);
     String selCalCreated(int ical);
@@ -18,6 +19,11 @@ public interface FoodRecordMapper {
     List<FoodSumList> sumEatKcal(int iuser, String start, String end);
     int sumEacKcal(int ical);
     int updImg(String randomName,int imealRecord);
+
+    String getTime(int ical);
+    String getRecordTime(int ical);
+    int sumKcal(int ical,Object time);
+    int updCalenderKcal(int ical,int sumKcal);
 
 }
 

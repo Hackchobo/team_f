@@ -10,4 +10,5 @@
         WHERE iuser = #{iuser} AND month(created_at)
         ORDER BY dates
     </select>
+
 </mapper>

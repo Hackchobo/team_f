@@ -90,12 +90,23 @@ public class FoodRecordService {
                 break;
         }
 
+
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
         entity.setCreatedAt(s);
         entity.setUefKcal(i);
         entity.setCtnt(dto.getCtnt());
-        return mapper.intFoodRecordDate(entity);
+        mapper.intFoodRecordDate(entity);
+
+        String time = mapper.getTime(dto.getIcal());
+        System.out.println(time);
+        String recordTime = mapper.getRecordTime(dto.getIcal());
+        System.out.println(recordTime);
+        if(time.equals(recordTime)){
+            int sumKcal = mapper.sumKcal(dto.getIcal(), time);
+          return  mapper.updCalenderKcal(dto.getIcal(),sumKcal);
+        }
+        return -1;
     }
 
     public FoodSum sumEatKcal(int iuser, String start, String end){
@@ -124,5 +135,42 @@ public class FoodRecordService {
 
         return mapper.updImg(randomName,imealRecord);
 
+    }
+
+
+    public int insFoodRecord(MultipartFile img,FoodRecordInsDto dto){
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+dto.getIcal();
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
+        String namePath = path +"/"+ randomName;
+        File file1 = new File(namePath);
+        try {
+            img.transferTo(file1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FoodRecordEntity entity=new FoodRecordEntity();
+        switch(dto.getUefTime()){
+            case 1:
+                entity.setUefTime("아침");
+                break;
+            case 2:
+                entity.setUefTime("점심");
+                break;
+            case 3:
+                entity.setUefTime("저녁");
+                break;
+        }
+
+        entity.setIfood(dto.getIfood());
+        entity.setIcal(dto.getIcal());
+
+        entity.setCtnt(dto.getCtnt());
+        entity.setUefPic(randomName);
+        return mapper.insFoodRecord(entity);
     }
 }

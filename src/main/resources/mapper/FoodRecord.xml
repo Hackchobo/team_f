@@ -77,4 +77,29 @@
         where imeal_record=#{imealRecord}
     </update>
 
+
+    <select id="getTime" >
+        select created_at createdAt from calender
+        where ical=#{ical}
+    </select>
+
+    <select id="getRecordTime">
+        select created_at  from user_meal_record
+        where ical=#{ical}
+        group by ical
+    </select>
+    <select id="sumKcal">
+        select sum(uef_kcal) from user_meal_record
+        WHERE ical=#{ical} AND created_at=#{time}
+        GROUP BY ical,created_at
+    </select>
+
+    <update id="updCalenderKcal">
+        update calender
+        set totaleat_kcal=#{sumKcal},
+            ex_kcal=totaleat_kcal+ex_kcal
+        where ical=#{ical}
+    </update>
+
+
 </mapper>
