@@ -104,4 +104,24 @@ public class FoodRecordService {
         foodSum.setList(foodSums);
         return foodSum;
     }
+
+
+    public int updImg(MultipartFile img,int imealRecord){
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodRecord/"+imealRecord ;
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String randomName = FileUtils.makeRandomFileNm(img.getOriginalFilename());
+        String namePath = path +"/"+ randomName;
+        File file1 = new File(namePath);
+        try {
+            img.transferTo(file1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mapper.updImg(namePath,imealRecord);
+
+    }
 }

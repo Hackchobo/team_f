@@ -24,7 +24,6 @@ public class FoodRecordController {
 
 
 
-
     @GetMapping
     @Operation(summary = "모든유저 식사기록 정보",description = ""+
             "imeal_record : 식사기록 고유번호<br>"+
@@ -76,5 +75,10 @@ public class FoodRecordController {
         return service.intFoodRecordDate(dto);
     }
 
+
+    @PatchMapping
+    public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
+        return service.updImg(img,imealRecord);
+    }
 
 }
