@@ -120,7 +120,7 @@ public class FoodRecordService {
 
 
     public int updImg(MultipartFile img,int imealRecord){
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+imealRecord ;
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord" ;
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -140,7 +140,9 @@ public class FoodRecordService {
 
 
     public int insFoodRecord(MultipartFile img,FoodRecordInsDto dto){
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+dto.getIcal();
+        int i = mapper.selIfood(dto.getIfood());
+        String s = mapper.selCalCreated(dto.getIcal());
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord";
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -170,8 +172,21 @@ public class FoodRecordService {
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
 
+        entity.setUefKcal(i);
         entity.setCtnt(dto.getCtnt());
         entity.setUefPic(randomName);
-        return mapper.insFoodRecord(entity);
+
+
+        String time = mapper.getTime(dto.getIcal());
+        entity.setCreatedAt(time);
+        mapper.insFoodRecord(entity);
+        System.out.println(time);
+        String recordTime = mapper.getRecordTime(dto.getIcal());
+        System.out.println(recordTime);
+        if(time.equals(recordTime)){
+            int sumKcal = mapper.sumKcal(dto.getIcal(), time);
+            return  mapper.updCalenderKcal(dto.getIcal(),sumKcal);
+        }
+        return 1;
     }
 }

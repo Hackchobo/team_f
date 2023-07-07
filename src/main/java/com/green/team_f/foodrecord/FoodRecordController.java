@@ -80,4 +80,14 @@ public class FoodRecordController {
     public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
         return service.updImg(img,imealRecord);
     }
+
+    @PostMapping(value = "img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @Operation(summary = "유저의 식사기록 변경",description = ""+
+            "ifood : 음식 고유번호<br>"+
+            "cal : 캘린더 고유번호<br>"+
+            "uefTime : 1(아침),2(점심),3(저녁)<br>"+
+            "ctnt : 식사기록의 코멘트<br>")
+    public int postImgDto(@RequestPart MultipartFile img,FoodRecordInsDto dto){
+        return service.insFoodRecord(img,dto);
+    }
 }

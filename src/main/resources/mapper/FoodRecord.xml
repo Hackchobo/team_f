@@ -6,9 +6,9 @@
 
     <insert id="insFoodRecord">
         insert into user_meal_record
-        (ifood,ical,uef_time,ctnt,uef_pic)
+        (ifood,ical,uef_time,uef_kcal,ctnt,uef_pic,created_at)
         values
-        (#{ifood},#{ical},#{uefTime},#{ctnt},#{uefPic})
+        (#{ifood},#{ical},#{uefTime},#{uefKcal},#{ctnt},#{uefPic},#{createdAt})
     </insert>
 
 
@@ -70,6 +70,7 @@
         group by C.iuser,createdAt
         ORDER BY A.created_at asc;
     </select>
+
 
     <update id="updImg">
         update user_meal_record
