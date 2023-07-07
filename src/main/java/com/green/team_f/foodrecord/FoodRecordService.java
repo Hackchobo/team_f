@@ -29,7 +29,7 @@ public class FoodRecordService {
 
 
     public int updRecord(MultipartFile img, FoodRecordUpdDto dto){
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+dto.getIcal();
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord";
         File file = new File(path);
 
         if (!file.exists()) {
