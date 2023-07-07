@@ -1,8 +1,5 @@
 package com.green.team_f.exrec;
 
-
-import ch.qos.logback.core.util.FileUtil;
-import com.green.team_f.TeamFApplication;
 import com.green.team_f.exrec.model.*;
 import com.green.team_f.list.ListService;
 import com.green.team_f.list.model.InsCalenderDto;
@@ -112,13 +109,16 @@ public class ExRecService {
         sDto.setIhelCate(dto.getIhelCate());
         vo.setHelName(mapper.selExName(sDto));
 
+        log.info(mapper.selExName(sDto));
         //(3)운동pk를 보내서 입력된 운동 별 칼로리 얻기
         int exKcalPerMin = selEx(sDto);
         vo.setHKcal(exKcalPerMin);
+        log.info(Integer.toString(exKcalPerMin));
 
         //(4)소모칼로리 : 분당 소모칼로리 * 운동시간 = 총 소모칼로리
         int subTotalKcal = exKcalPerMin * dto.getTime();
         vo.setTotalHelKcal(subTotalKcal);
+        log.info(Integer.toString(subTotalKcal));
         return vo;
     }
 

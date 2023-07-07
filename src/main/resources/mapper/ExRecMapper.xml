@@ -9,7 +9,11 @@
         from health_category
         where ihel_cate = #{ihelCate}
     </select>
-
+    <select id="selExName">
+        select hel_name helName
+        from health_category
+        where ihel_cate = #{ihelCate}
+    </select>
     <insert id="InsExRec">
         INSERT INTO user_health_record
         SET ihel_cate = #{ihelCate}
