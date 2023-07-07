@@ -80,10 +80,4 @@ public class FoodRecordController {
     public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
         return service.updImg(img,imealRecord);
     }
-
-    @PostMapping(value = "img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public int postImgDto(@RequestPart MultipartFile img,FoodRecordInsDto dto){
-        return service.insFoodRecord(img,dto);
-    }
-
 }
