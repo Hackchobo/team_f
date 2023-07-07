@@ -108,7 +108,7 @@ public class FoodRecordService {
 
 
     public int updImg(MultipartFile img,int imealRecord){
-        String path = FileUtils.getAbsolutePath(fileDir)+"/foodRecord/"+imealRecord ;
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+imealRecord ;
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();

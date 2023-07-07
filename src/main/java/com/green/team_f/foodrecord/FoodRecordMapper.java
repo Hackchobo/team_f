@@ -17,7 +17,7 @@ public interface FoodRecordMapper {
     int delRecord(int imealRecord);
     List<FoodSumList> sumEatKcal(int iuser, String start, String end);
     int sumEacKcal(int ical);
-    int updImg(String img,int imealRecord);
+    int updImg(String randomName,int imealRecord);
 
 }
 
