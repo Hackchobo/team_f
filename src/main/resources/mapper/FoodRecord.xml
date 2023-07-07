@@ -73,7 +73,7 @@
 
     <update id="updImg">
         update user_meal_record
-        set uef_pic=#{img}
+        set uef_pic=#{randomName}
         where imeal_record=#{imealRecord}
     </update>
 
