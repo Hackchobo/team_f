@@ -50,10 +50,11 @@ public class UserSevice {
     } // 회원등록 (사진제외 NULL값으로 날라감)
 
     public int updUserPic(MultipartFile pic, UserPatchPicDto dto){
-        String centerPath = String.format("%s/user/%d",fileDir, dto.getIuser());
-        String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
+        String centerPath = String.format("%s/user/%d",FileUtils.getAbsolutePath(fileDir), dto.getIuser());
+       // String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
+        System.out.println(centerPath);
 
-        File dic = new File(dicPath);           //폴더가 없을 경우 폴더를 생성
+        File dic = new File(centerPath);           //폴더가 없을 경우 폴더를 생성
         if(!dic.exists()) {
             dic.mkdirs();
         }
@@ -61,14 +62,16 @@ public class UserSevice {
         String originFileName = pic.getOriginalFilename();
         String savedFileName = FileUtils.makeRandomFileNm(originFileName);
         String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
-        String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
-        File target = new File(targetPath);
+        //String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
+        //String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
+        System.out.println(savedFilePath);
+        File target = new File(savedFilePath);
         try {
             pic.transferTo(target);
         }catch (Exception e) {
             return 0;
         }
-        dto.setUsepic(savedFilePath);
+        dto.setUsepic(savedFileName);
         try {
             int result = mapper.updUserPic(dto);
             if(result == 0) {

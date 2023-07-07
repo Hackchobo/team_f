@@ -14,9 +14,7 @@ import java.util.List;
 @Service
 public class CalenderService {
     private final CalenderMapper mapper;
-
-
     List<MonthRecordByUserVo> GetMonthRecordByUser(MonthRecordByUserDto dto){
         return mapper.getMonthRecordByUser(dto);
-    };
+    }
 }

@@ -3,10 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.green.tean_f.calender.CalenderMapper">
-    <select id="getMonthRecordByUser" >
-        SELECT DATE_FORMAT(created_at, '%d') AS dates
+<mapper namespace="com.green.team_f.calender.CalenderMapper">
+    <select id="getMonthRecordByUser">
+        SELECT created_at dates
         FROM calender
-        WHERE iuser = #{iuser} AND YEAR(created_at) = #{year} AND MONTH(created_at) = #{month}
+        WHERE iuser = #{iuser} AND month(created_at)
+        ORDER BY dates
     </select>
 </mapper>
