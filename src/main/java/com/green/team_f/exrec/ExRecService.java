@@ -80,7 +80,7 @@ public class ExRecService {
 
         //path, 디렉토리명 만들기
         //파일전송
-        String dirPath = String.format("%s/exrec/%s",FileUtils.getAbsolutePath(fileDir),icalForUserOftheDay);
+        String dirPath = String.format("%s/helrecord",FileUtils.getAbsolutePath(fileDir));
         File file = new File(dirPath);
 
         if(!(file.exists())){
