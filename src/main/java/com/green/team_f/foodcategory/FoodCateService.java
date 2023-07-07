@@ -40,7 +40,7 @@ public class FoodCateService {
        entity.setFoodName(dto.getFoodName());
        entity.setF_kcal(dto.getF_kcal());
        System.out.println(dto.getF_kcal());
-       entity.setFoodPic(namePath);
+       entity.setFoodPic(randomName);
        return mapper.insFoodCate(entity);
    }
 
@@ -67,7 +67,7 @@ public class FoodCateService {
         entity.setIfood(dto.getIfood());
         entity.setFoodName(dto.getFoodName());
         entity.setF_kcal(dto.getF_kcal());
-        entity.setFoodPic(namePath);
+        entity.setFoodPic(randomName);
 
         return mapper.updFoodCate(entity);
     }

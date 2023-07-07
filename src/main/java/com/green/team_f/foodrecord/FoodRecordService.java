@@ -29,7 +29,7 @@ public class FoodRecordService {
 
 
     public int updRecord(MultipartFile img, FoodRecordUpdDto dto){
-        String path = FileUtils.getAbsolutePath(fileDir)+ "/foodrecord"+dto.getIcal();
+        String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+dto.getIcal();
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -60,7 +60,7 @@ public class FoodRecordService {
         entity.setIcal(dto.getIcal());
 
         entity.setCtnt(dto.getCtnt());
-        entity.setUefPic(namePath);
+        entity.setUefPic(randomName);
         return mapper.updRecord(entity);
     }
 
@@ -89,6 +89,7 @@ public class FoodRecordService {
                 entity.setUefTime("저녁");
                 break;
         }
+
         entity.setIfood(dto.getIfood());
         entity.setIcal(dto.getIcal());
         entity.setCreatedAt(s);
@@ -121,7 +122,7 @@ public class FoodRecordService {
             e.printStackTrace();
         }
 
-        return mapper.updImg(namePath,imealRecord);
+        return mapper.updImg(randomName,imealRecord);
 
     }
 }
