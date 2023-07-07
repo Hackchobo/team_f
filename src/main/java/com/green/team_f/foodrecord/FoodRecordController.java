@@ -76,7 +76,7 @@ public class FoodRecordController {
     }
 
 
-    @PatchMapping
+    @PatchMapping(value = "/img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
         return service.updImg(img,imealRecord);
     }
