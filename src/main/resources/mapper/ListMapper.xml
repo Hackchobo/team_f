@@ -2,13 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.team_f.list.ListMapper">
     <select id="selMealList">
-        SELECT B.imeal_record imealRecord, B.ifood ifood,B.uef_time uefTime,B.uef_kcal uefKcal
-                ,B.ctnt ctntF,B.uef_pic uefPic
+        SELECT B.imeal_record imealRecord, C.food_name foodName,B.uef_time uefTime,B.uef_kcal uefKcal
+        ,B.ctnt ctntF,B.uef_pic uefPic
         FROM calender A
         INNER JOIN user_meal_record B
         ON A.ical = B.ical
+        INNER JOIN food_category C
+        ON B.ifood = C.ifood
         WHERE A.created_at = #{date} and iuser = #{iuser}
-        ORDER BY B.uef_time
+        ORDER BY B.uef_time;
     </select>
 
     <select id="selHelList">

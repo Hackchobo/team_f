@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ListSelMealVo {
     private int imealRecord;
-    private int ifood;
+    private String foodName;
     private String uefTime;
     private int uefKcal;
     private String ctntF;
