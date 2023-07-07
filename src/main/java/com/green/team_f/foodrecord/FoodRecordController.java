@@ -80,5 +80,4 @@ public class FoodRecordController {
     public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
         return service.updImg(img,imealRecord);
     }
-
 }

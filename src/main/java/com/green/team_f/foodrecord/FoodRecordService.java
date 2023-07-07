@@ -31,6 +31,7 @@ public class FoodRecordService {
     public int updRecord(MultipartFile img, FoodRecordUpdDto dto){
         String path = FileUtils.getAbsolutePath(fileDir)+"/foodrecord/"+dto.getIcal();
         File file = new File(path);
+
         if (!file.exists()) {
             file.mkdirs();
         }

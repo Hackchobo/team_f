@@ -39,9 +39,11 @@ public class ListService {
         GetDataOfTodayDto getDataOfTodayDto = new GetDataOfTodayDto();
         getDataOfTodayDto.setIuser(insCalenderDto.getIuser());
         //calenderDto에 bmr 주입
-        insCalenderDto.setBmr(mapper.getIuserBmr(getDataOfTodayDto));
+        int iuserBmr = mapper.getIuserBmr(getDataOfTodayDto);
+        insCalenderDto.setBmr(iuserBmr);
         mapper.InsCalenderDataForRec(insCalenderDto);
         log.info("ical : " + insCalenderDto.getIcal());
+        log.info("bmr : "+ iuserBmr);
         return insCalenderDto.getIcal();
     }
 
