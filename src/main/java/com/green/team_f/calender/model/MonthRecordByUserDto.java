@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class MonthRecordByUserDto {
     private Long iuser;
-    private String year;
-    private String month;
+    private String yearMonth;
 }
