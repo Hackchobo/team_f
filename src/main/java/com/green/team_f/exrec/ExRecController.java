@@ -21,7 +21,7 @@ public class ExRecController {
     private final ExRecService service;
 
     @GetMapping("/kcalbyex")
-    @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description = ""+
+    @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description =
             "ihelCate : 운동종류의 PK값")
     public int getCate(@RequestParam Long ihelCate){
         SelExDto dto = new SelExDto();
@@ -29,7 +29,7 @@ public class ExRecController {
         return service.selEx(dto);
     }
 
-    @Operation(summary = "운동카테고리 전체목록",description = ""+
+    @Operation(summary = "운동카테고리 전체목록",description =
             " 문자 배열 타입")
     @GetMapping("/exlist")
     public List<SelListKcalVo> getHelCateList (){return service.getHelCateList();}
