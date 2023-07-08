@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class SelListKcalVo {
+    private Long ihelCate;
     private String helName;
     private int hKcal;
 }

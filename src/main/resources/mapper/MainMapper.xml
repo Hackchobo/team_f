@@ -10,9 +10,9 @@
         WHERE iuser=#{iuser} and DATE(created_at) = DATE(now())
     </select>
 
-    <select id="GetGraphDataByDate" >
+    <select id="GetGraphDataByDate">
         select iuser,totaleat_kcal eatKcal, totalhel_kcal helKcal,
-        ex_kcal exKcal, created_at createdAt
+        ex_kcal exKcal, DATE_FORMAT(created_at,"%c/%e") createdAt
         FROM calender
         WHERE iuser=#{iuser} AND (created_at BETWEEN #{startDate} AND #{endDate})
     </select>

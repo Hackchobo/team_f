@@ -16,10 +16,10 @@ import java.util.List;
 @RequestMapping("/api/exrec")
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name="운동기록관리")
 public class ExRecController {
     private final ExRecService service;
 
-    @Tag(name="카테고리+칼로리")
     @GetMapping("/kcalbyex")
     @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description = ""+
             "ihelCate : 운동종류의 PK값")
@@ -29,16 +29,13 @@ public class ExRecController {
         return service.selEx(dto);
     }
 
-
-    @Tag(name="운동카테고리목록")
     @Operation(summary = "운동카테고리 전체목록",description = ""+
             " 문자 배열 타입")
     @GetMapping("/exlist")
     public List<SelListKcalVo> getHelCateList (){return service.getHelCateList();}
 
 
-    @Tag(name="운동기록입력")
-    @Operation(summary = "운동종류의 분당 칼로리(ex: 100)",description = ""+
+    @Operation(summary = "운동기록입력",description = "운동종류의 분당 칼로리(ex: 100)"+
             " uhPic:유저운동사진(이미지파일)<br>"+
             " ical:기록날짜(yyyy-mm-dd)<br>" +
             " uhKcal:시간당소모량(int)<br>" +

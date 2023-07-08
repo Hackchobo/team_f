@@ -27,13 +27,13 @@
     <update id="upCalenderByHelRec">
         UPDATE calender
         SET totalhel_kcal = (totalhel_kcal + #{uhKcal})
-        , ex_kcal = (ex_kcal-#{uhKcal})
+        , ex_kcal = (ex_kcal - #{uhKcal})
         , created_at = #{recDate}
         where ical = #{ical} and iuser = #{iuser}
     </update>
 
     <select id="getHelCateList">
-        select hel_name helName, h_Kcal hKcal
+        select hel_name helName, h_Kcal hKcal, ihel_cate ihelCate
         from health_category
     </select>
 </mapper>
