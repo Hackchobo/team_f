@@ -116,6 +116,7 @@ public class ExRecService {
         //(2)운동pk로 운동이름얻기
         SelExDto sDto = new SelExDto();
         sDto.setIhelCate(dto.getIhelCate());
+        vo.setIhelCate(dto.getIhelCate());
         vo.setHelName(mapper.selExName(sDto));
 
         log.info(mapper.selExName(sDto));
