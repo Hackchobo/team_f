@@ -81,13 +81,14 @@ public class FoodRecordController {
         return service.updImg(img,imealRecord);
     }
 
-    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+
     @Operation(summary = "(최종)유저의 식사기록 입력",description = ""+
             "ifood : 음식 고유번호<br>"+
             "cal : 캘린더 고유번호<br>"+
             "uefTime : 1(아침),2(점심),3(저녁)<br>"+
             "ctnt : 식사기록의 코멘트<br>")
-    public int postImgDto(@RequestPart MultipartFile img,FoodRecordInsDto dto){
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+    public int postImgDto(@RequestPart MultipartFile img, @RequestPart FoodRecordInsDto dto){
         return service.insFoodRecord(img,dto);
     }
 }
