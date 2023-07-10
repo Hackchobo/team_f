@@ -1,4 +1,4 @@
-package com.green.team_f.exrec;
+package com.green.team_f;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter;
