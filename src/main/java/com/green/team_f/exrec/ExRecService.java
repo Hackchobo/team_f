@@ -85,23 +85,13 @@ public class ExRecService {
         if(!file.exists()){
             file.mkdirs();
         }
-        String targetPath = ("/"+ savedName);
+        String targetPath = (dirPath +"/"+ savedName);
         File target = new File(targetPath);
 
         try{
             uhPic.transferTo(target);
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
-        }
-        try {
-            int result = mapper.InsExRec(dto2);
-            if(result == 0) {
-                throw new Exception("프로필 사진을 등록할 수 없습니다.");
-            }
-        } catch (Exception e) {
-            //파일 삭제
-            target.delete();
             return 0;
         }
         return 1;
