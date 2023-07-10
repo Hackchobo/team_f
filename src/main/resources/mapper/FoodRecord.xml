@@ -98,7 +98,8 @@
 
     <update id="updCalenderKcal">
         update calender
-        set ex_kcal=#{sumKcal}-totaleat_kcal+ex_kcal,totaleat_kcal=#{sumKcal}
+        set totaleat_kcal= (totaleat_kcal+#{sumKcal})
+        , ex_kcal=(ex_kcal + #{sumKcal})
         where ical=#{ical}
     </update>
 </mapper>

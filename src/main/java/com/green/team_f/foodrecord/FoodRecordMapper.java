@@ -23,7 +23,7 @@ public interface FoodRecordMapper {
     String getTime(int ical);
     String getRecordTime(int ical);
     int sumKcal(int ical,Object time);
-    int updCalenderKcal(int ical,int sumKcal);
+    int updCalenderKcal(Long ical,int sumKcal);
 
 }
 

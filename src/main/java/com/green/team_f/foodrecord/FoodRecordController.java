@@ -65,24 +65,24 @@ public class FoodRecordController {
         return service.sumEatKcal(iuser,start,end);
     }
 
-    @PostMapping
-    @Operation(summary = "유저 식사기록 입력",description = ""+
-            "ifood : 음식의 고유번호<br>"+
-            "ical : 캘린더의 고유번호<br>"+
-            "uef_time : 1(아침),2(점심),3(저녁)<br>"+
-            "ctnt : 음식기록 페이지의 코멘트<br><br>")
-    public int postRecordDate(@RequestBody FoodRecordInsDto dto){
-        return service.intFoodRecordDate(dto);
-    }
-
+//    @PostMapping("/post")
+//    @Operation(summary = "유저 식사기록 입력",description = ""+
+//            "ifood : 음식의 고유번호<br>"+
+//            "ical : 캘린더의 고유번호<br>"+
+//            "uef_time : 1(아침),2(점심),3(저녁)<br>"+
+//            "ctnt : 음식기록 페이지의 코멘트<br><br>")
+//    public int postRecordDate(@RequestBody FoodRecordInsDto dto){
+//        return service.intFoodRecordDate(dto);
+//    }
+//사용안함
 
     @PatchMapping(value = "/img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public int patchImg(@RequestPart MultipartFile img,@RequestParam int imealRecord){
         return service.updImg(img,imealRecord);
     }
 
-    @PostMapping(value = "img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    @Operation(summary = "유저의 식사기록 입력",description = ""+
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+    @Operation(summary = "(최종)유저의 식사기록 입력",description = ""+
             "ifood : 음식 고유번호<br>"+
             "cal : 캘린더 고유번호<br>"+
             "uefTime : 1(아침),2(점심),3(저녁)<br>"+
