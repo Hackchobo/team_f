@@ -5,10 +5,10 @@
 
 <mapper namespace="com.green.team_f.calender.CalenderMapper">
     <select id="getMonthRecordByUser">
-        SELECT created_at dates
+        SELECT created_at createdAt
         FROM calender
-        WHERE iuser = #{iuser} AND month(created_at)
-        ORDER BY dates
+        WHERE iuser = #{iuser} AND DATE_format(created_at,"%Y%m") = #{yearMonth}
+        ORDER BY created_at
     </select>
 
 </mapper>
