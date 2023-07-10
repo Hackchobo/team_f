@@ -6,7 +6,7 @@ import lombok.Data;
 public class FoodRecordInsDto {
     private int ifood;
     private int iuser;
-    private int ical;
+    private String recDate;
     private int uefTime;
     private String ctnt;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 public class FoodRecordEntity {
     private int imealRecord;
     private int ifood;
-    private int ical;
+    private Long ical;
     private String uefTime;
     private int uefKcal;
     private String ctnt;
