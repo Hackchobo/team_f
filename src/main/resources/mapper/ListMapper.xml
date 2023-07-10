@@ -3,7 +3,7 @@
 <mapper namespace="com.green.team_f.list.ListMapper">
     <select id="selMealList">
         SELECT B.imeal_record imealRecord, C.food_name foodName,B.uef_time uefTime,B.uef_kcal uefKcal
-        ,B.ctnt ctntF,B.uef_pic uefPic
+        ,B.ctnt ctntF,B.uef_pic uefPic,B.created_at createdAt
         FROM calender A
         INNER JOIN user_meal_record B
         ON A.ical = B.ical
