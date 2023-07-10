@@ -10,7 +10,7 @@
         INNER JOIN food_category C
         ON B.ifood = C.ifood
         WHERE A.created_at = #{date} and iuser = #{iuser}
-        ORDER BY B.uef_time;
+        ORDER BY field(B.uef_time,'아침','점심','저녁');
     </select>
 
     <select id="selHelList">
