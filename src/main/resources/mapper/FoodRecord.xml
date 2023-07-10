@@ -22,6 +22,7 @@
     <select id="selRecordAll">
         select imeal_record imealRecord,ifood,ical,uef_time uefTime,uef_kcal uefKcal,ctnt,uef_pic uefPic,created_at createdAt
         from user_meal_record
+        order by created_at,field(uef_time,'아침','점심','저녁')
     </select>
 
 
@@ -97,10 +98,7 @@
 
     <update id="updCalenderKcal">
         update calender
-        set totaleat_kcal=#{sumKcal},
-            ex_kcal=totaleat_kcal+ex_kcal
+        set ex_kcal=#{sumKcal}-totaleat_kcal+ex_kcal,totaleat_kcal=#{sumKcal}
         where ical=#{ical}
     </update>
-
-
 </mapper>

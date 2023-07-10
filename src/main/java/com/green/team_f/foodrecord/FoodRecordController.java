@@ -82,7 +82,7 @@ public class FoodRecordController {
     }
 
     @PostMapping(value = "img",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    @Operation(summary = "유저의 식사기록 변경",description = ""+
+    @Operation(summary = "유저의 식사기록 입력",description = ""+
             "ifood : 음식 고유번호<br>"+
             "cal : 캘린더 고유번호<br>"+
             "uefTime : 1(아침),2(점심),3(저녁)<br>"+
